@@ -1,0 +1,410 @@
+@import url("https://fonts.googleapis.com/css2?family=Fustat:wght@300;400;500;600;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+.content-auto {
+  content-visibility: auto;
+}
+
+/* ======================================================
+   BASE RESET
+====================================================== */
+body {
+  margin: 0;
+  overflow-x: hidden;
+  
+}
+
+/* ======================================================
+   THEME VARIABLES (MAIN WEBSITE – SOURCE OF TRUTH)
+====================================================== */
+:root {
+  --background: 0 0% 5%;
+  --foreground: 0 0% 98%;
+
+  --muted: 240 6% 15%;
+  --muted-foreground: 240 5% 65%;
+
+  --border: 240 6% 20%;
+  --primary: 270 80% 55%;
+
+  /* CAREERS EXTENSIONS (NON-CONFLICTING) */
+  --accent: 280 70% 65%;
+  --gradient-start: 260 30% 6%;
+  --gradient-end: 280 40% 12%;
+  --card-glow: 270 60% 50%;
+
+  /* ===== CAREERS / SHADCN EXTENSIONS ===== */
+  --card: 240 8% 8%;
+  --card-foreground: 0 0% 98%;
+
+  --secondary: 240 6% 15%;
+  --secondary-foreground: 0 0% 98%;
+
+  --input: 240 6% 15%;
+  --ring: 270 80% 55%;
+  --radius: 0.75rem;
+
+}
+
+/* ======================================================
+   BASE FIX
+====================================================== */
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  overflow-x: hidden;
+}
+
+/* ======================================================
+   GLASS EFFECT (NAVBAR ETC.)
+====================================================== */
+.glass {
+  background: linear-gradient(180deg,
+      rgba(10, 10, 15, 0.85),
+      rgba(10, 10, 15, 0.65));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid hsl(var(--border));
+}
+
+/* ======================================================
+   NAV LINK STYLE
+====================================================== */
+.nav-link {
+  color: hsl(var(--muted-foreground));
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: hsl(var(--foreground));
+}
+
+/* underline animation */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: hsl(var(--primary));
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ======================================================
+   BUTTON VARIANT (SLANTED)
+====================================================== */
+button[data-variant="slanted"],
+.btn-slanted {
+  background: linear-gradient(135deg, #7c3aed, #9333ea);
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(147, 51, 234, 0.35);
+}
+
+/* ======================================================
+   TEXT HELPERS
+====================================================== */
+.text-muted-foreground {
+  color: hsl(var(--muted-foreground));
+}
+
+.bg-muted {
+  background-color: hsl(var(--muted));
+}
+
+.border-border {
+  border-color: hsl(var(--border));
+}
+
+/* ======================================================
+   FONTS
+====================================================== */
+
+/* Evil Empire – OTF */
+@font-face {
+  font-family: "Evil Empire";
+  src: url("/src/assets/fonts/EvilEmpire.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Letter spacing */
+h1,
+h2,
+a,
+button {
+  letter-spacing: 0.08em;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  button {
+    font-family: "Evil Empire", sans-serif;
+    font-weight: normal;
+  }
+
+  body {
+    font-family: "Fustat", sans-serif;
+  }
+}
+
+@layer base {
+  h3 {
+    letter-spacing: 0.15em;
+  }
+
+  button,
+  a {
+    letter-spacing: 0.05em;
+  }
+}
+
+
+/* ======================================================
+   CAREERS PAGE UTILITIES (ADDED)
+====================================================== */
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[hsl(var(--primary))] via-[hsl(var(--accent))] to-[hsl(var(--primary))];
+  }
+
+  .card-glow {
+    box-shadow:
+      0 0 0 1px hsl(var(--border)),
+      0 4px 20px hsl(var(--card-glow) / 0.1),
+      0 8px 40px hsl(var(--card-glow) / 0.05);
+  }
+
+  .card-glow-hover {
+    box-shadow:
+      0 0 0 1px hsl(var(--primary) / 0.6),
+      0 6px 30px hsl(var(--primary) / 0.35),
+      0 12px 80px hsl(var(--primary) / 0.25);
+  }
+
+}
+
+/* ======================================================
+   CAREERS BACKGROUNDS (ADDED)
+====================================================== */
+@layer components {
+  .gradient-bg {
+    background: linear-gradient(135deg,
+        hsl(var(--gradient-start)) 0%,
+        hsl(var(--gradient-end)) 50%,
+        hsl(var(--gradient-start)) 100%);
+  }
+
+  .hero-gradient {
+    background:
+      radial-gradient(ellipse at 50% 0%,
+        hsl(var(--primary) / 0.25) 0%,
+        transparent 55%),
+      radial-gradient(ellipse at 80% 40%,
+        hsl(var(--primary) / 0.18) 0%,
+        transparent 45%),
+      radial-gradient(ellipse at 20% 80%,
+        hsl(var(--primary) / 0.12) 0%,
+        transparent 45%);
+  }
+
+}
+
+/* ======================================================
+   ANIMATIONS (ADDED)
+====================================================== */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-18px);
+  }
+}
+
+.animate-float {
+  animation: float 7s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0% {
+    opacity: 0.25;
+  }
+
+  50% {
+    opacity: 0.75;
+  }
+
+  100% {
+    opacity: 0.25;
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 5s ease-in-out infinite;
+}
+
+/* ======================================================
+   contact us (ADDED)
+====================================================== */
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 25px rgba(255, 80, 80, 0.35));
+  }
+  50% {
+    filter: drop-shadow(0 0 55px rgba(255, 80, 80, 0.65));
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.animate-glow-pulse {
+  animation: glowPulse 4s ease-in-out infinite;
+}
+
+/** button CSS **/
+
+/* From Uiverse.io by satyamchaudharydev */ 
+/* inspired form gumroad website */
+.button {
+  --bg: #000;
+  --hover-bg: #ff90e8;
+  --hover-text: #000;
+  color: #fff;
+  cursor: pointer;
+  border: 1px solid var(--bg);
+  border-radius: 4px;
+  padding: 0.8em 2em;
+  background: var(--bg);
+  transition: 0.2s;
+}
+
+.button:hover {
+  color: var(--hover-text);
+  transform: translate(-0.25rem, -0.25rem);
+  background: var(--hover-bg);
+  box-shadow: 0.25rem 0.25rem var(--bg);
+}
+
+.button:active {
+  transform: translate(0);
+  box-shadow: none;
+}
+.wave-gradient {
+
+  background:
+    linear-gradient(
+      140deg,
+      rgba(17, 5, 28, 0.445) 0%,
+      rgba(115, 33, 190, 0.18) 38%,
+      rgba(0, 0, 0, 0.8) 65%,
+      #000 100%
+    ),
+    linear-gradient(
+      10deg,
+      rgba(64, 0, 110, 0.6) 10%,
+      rgba(0, 0, 0, 0) 55%
+    );
+}
+.wave-bg {
+  
+  background: url("C:\Users\abhishek\Desktop\moonglade-allpages\src\assets\blurry-gradient-haikei.svg") center / cover no-repeat;
+}
+
+/*--------------------
+portfoliogame page overview cuts
+---------------------*/
+
+/* TOP-RIGHT CUT STROKE */
+.panel-cut {
+  position: relative;        /* REQUIRED */
+  padding: 48px;
+  color: white;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 50px) 0,
+    100% 50px,
+    100% 100%,
+    50px 100%,
+    0 calc(100% - 50px)
+  );
+}
+
+
+.clip-card-shape {
+  clip-path: polygon(
+    0% 0%,          /* top-left corner */
+    80% 0%,         /* top horizontal */
+    90% 10%,        /* top-right small diagonal */
+    100% 10%,       /* top-right vertical */
+    100% 85%,       /* right side vertical */
+    90% 100%,       /* bottom-right diagonal */
+    0% 100%         /* bottom-left */
+  );
+}
+
+
+/* auto scroll cards*/
+
+
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
+/* zues css */
+
+.gif-container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.gif-container img {
+   width: 600px;   /* adjust size */
+   height: auto;
+}
+
+
+
