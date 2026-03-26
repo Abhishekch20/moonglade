@@ -325,9 +325,7 @@ export default function Portfolio() {
         </section>
 
         {/* ================= GALLERY SECTION ================= */}
-        <DeferredSection minHeight="100vh">
-          <Indexs />
-        </DeferredSection>
+        
       </section>
 
       <section className="wave-gradient relative py-20 px-6 ">

@@ -125,8 +125,10 @@ export function FeatureCards() {
           className="text-center mb-20"
         >
           <p className="text-white/60 max-w-4xl mx-auto lg:text-lg sm:text-1xl leading-relaxed">
-            With decades of experience, global partnerships, and certified excellence,
-            we continue to push creative and technical boundaries in the gaming industry.
+            Backed by decades of experience and global collaborations,
+            Moonglade Atelier is a trusted game art outsourcing studio
+            specializing in 2D animation, slot game art, and scalable production
+            solutions.
           </p>
         </motion.div>
 

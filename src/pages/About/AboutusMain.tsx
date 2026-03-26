@@ -5,17 +5,16 @@ import blueryu from "@/assets/blueryu.png";
 import greenRyu from "@/assets/greenryu.png";
 import bgImage from "@/assets/Aboutus_bg.svg";
 
-
-
-import Symbol1 from "@/assets/Symbol1.png"
-import Symbol2 from "@/assets/Symbol2.png"
-import Symbol3 from "@/assets/Symbol3.png"
-import Symbol4 from "@/assets/Symbol4.png"
-import Symbol5 from "@/assets/Symbol5.png"
+import Symbol1 from "@/assets/Symbol1.png";
+import Symbol2 from "@/assets/Symbol2.png";
+import Symbol3 from "@/assets/Symbol3.png";
+import Symbol4 from "@/assets/Symbol4.png";
+import Symbol5 from "@/assets/Symbol5.png";
 
 import img1 from "@/assets/Howwedo.png";
 import img2 from "@/assets/Whatwedo.png";
 import img3 from "@/assets/Whoweare.png";
+
 /* -------------------------------
    Animation Variants
 -------------------------------- */
@@ -37,8 +36,6 @@ const slideUp = {
 /* -------------------------------
    DATA
 -------------------------------- */
-
-
 
 const testimonials = [
   {
@@ -89,7 +86,6 @@ export function AboutUS() {
   const [active, setActive] = useState(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  /* ---------- AUTO SLIDE ---------- */
   const startAuto = () => {
     stopAuto();
     intervalRef.current = setInterval(() => {
@@ -109,11 +105,10 @@ export function AboutUS() {
     return stopAuto;
   }, []);
 
-  /* ---------- BUTTON HANDLERS ---------- */
   const prevSlide = () => {
     stopAuto();
     setActive((prev) =>
-      prev === 0 ? testimonials.length - 1 : prev - 1
+      prev === 0 ? testimonials.length - 1 : prev - 1,
     );
     startAuto();
   };
@@ -124,7 +119,6 @@ export function AboutUS() {
     startAuto();
   };
 
-  /* ---------- OFFSET LOGIC ---------- */
   const getOffset = (index: number) => {
     const half = Math.floor(testimonials.length / 2);
     let diff = index - active;
@@ -185,13 +179,14 @@ export function AboutUS() {
             </motion.h1>
 
             <motion.p variants={slideUp} className="max-w-[34ch] text-center text-base leading-relaxed text-gray-300 sm:max-w-xl sm:text-lg">
-              Moonglade Atelier began with a simple belief — strong stories and
-              powerful visuals make games unforgettable.
+              Moonglade Atelier is a game art outsourcing studio built on the
+              belief that compelling storytelling and high-quality visuals
+              define successful games.
             </motion.p>
 
             <motion.p variants={slideUp} className="max-w-[34ch] text-center text-base leading-relaxed text-gray-300 sm:max-w-xl sm:text-lg">
-              Today, we deliver game art, animation, and cinematic visuals for
-              clients worldwide.
+              We provide 2D/3D game art, animation, slot game assets, and
+              cinematic production services for global clients.
             </motion.p>
           </motion.div>
 
@@ -216,7 +211,6 @@ export function AboutUS() {
       </div>
 
       {/* ================= OUR EXPERTISE ================= */}
-      {/* ================= 3 SCI-FI CARDS ================= */}
       <section className="relative z-10 mt-32 px-6">
         <div className="max-w-5xl mx-auto flex flex-col gap-24">
 
@@ -226,27 +220,27 @@ export function AboutUS() {
               image: img3,
               position: "left",
               text1:
-                "Moonglade Atelier began with a simple belief — strong stories and powerful visuals make games unforgettable. Moonglade Atelier began with a simple belief — strong stories and powerful visuals make games unforgettable.",
+                "Moonglade Atelier is a game art outsourcing studio built on the belief that compelling storytelling and high-quality visuals drive successful games.",
               text2:
-                "Today, we deliver game art, animation, and cinematic visuals for clients worldwide. Moonglade Atelier began with a simple belief — strong stories and powerful visuals make games unforgettable.",
+                "We specialize in 2D game art, slot game assets, animation, and cinematic production for global clients.",
             },
             {
               title: "WHAT WE DO",
               image: img2,
               position: "right",
               text1:
-                "We specialize in 2D & 3D art, character animation, cinematic trailers and immersive storytelling visuals. Moonglade Atelier began with a simple belief — strong stories and powerful visuals make games unforgettable.",
+                "Moonglade Atelier provides professional game art outsourcing services, including 2D game art, slot game assets, character animation, cinematic trailers, and immersive storytelling visuals for global game studios.",
               text2:
-                "Our goal is to elevate your project with premium visual quality and technical precision. Moonglade Atelier began with a simple belief — strong stories and powerful visuals make games unforgettable.",
+                "We focus on delivering high-quality, scalable art solutions with strong visual appeal and technical accuracy.",
             },
             {
-              title: "HOW WE DO",
+              title: "HOW WE DO IT",
               image: img1,
               position: "left",
               text1:
-                "We combine creative direction, structured pipelines, and industry-grade tools to deliver stunning results. Moonglade Atelier began with a simple belief — strong stories and powerful visuals make games unforgettable.",
+                "Moonglade Atelier follows a structured game art production pipeline, combining creative direction, advanced tools, and scalable workflows to deliver 2D game art, animation, and cinematic assets for global clients.",
               text2:
-                "Every project is crafted with attention to detail and global quality standards. Moonglade Atelier began with a simple belief — strong stories and powerful visuals make games unforgettable.",
+                "We ensure high-quality output through efficient processes, technical precision, and industry-standard practices.",
             },
           ].map((card, index) => {
             const isLeft = card.position === "left";
@@ -338,14 +332,15 @@ export function AboutUS() {
             </h2>
 
             <p className="text-gray-300 max-w-lg text-lg md:text-base lg:text-xl mb-4 leading-relaxed">
-              We provide best services with guarantee. We are the best realtor in
-              country and always bring best option for our customer or clients. We
-              never compromise on guarantee. Lorem ipsum dolor sit amet,
-              consectetur adipisicing elit, sed do eiusmod tempor.
+              As a professional game art outsourcing studio, Moonglade Atelier
+              specializes in 2D game art, slot game design, animation, and
+              cinematic production. Our scalable workflows, fast turnaround
+              times, and industry-standard processes ensure high-quality asset
+              delivery for game developers worldwide.
             </p>
           </div>
 
-          {/* Line Decoration — Visible Only on Desktop */}
+          {/* Line Decoration â€” Visible Only on Desktop */}
           <div className="hidden lg:block">
 
             <div className="flex">
@@ -368,9 +363,9 @@ export function AboutUS() {
               <div className="flex items-start gap-4">
                 <img src={Symbol2} alt="" loading="lazy" decoding="async" className="w-20 h-20" />
                 <div>
-                  <h4 className="font-semibold text-2xl tracking-widest">Lorem Ipsum</h4>
+                  <h4 className="font-semibold text-2xl tracking-widest">Quality</h4>
                   <p className="text-gray-400 text-lg">
-                    Lorem ipsum Lorem ipsum is a dummy text for temp use only
+                    We deliver high-quality 2D/3D game art and animation tailored for global game studios.
                   </p>
                 </div>
               </div>
@@ -378,9 +373,9 @@ export function AboutUS() {
               <div className="flex items-start gap-4">
                 <img src={Symbol3} alt="" loading="lazy" decoding="async" className="w-20 h-20" />
                 <div>
-                  <h4 className="font-semibold text-2xl tracking-widest">Lorem Ipsum</h4>
+                  <h4 className="font-semibold text-2xl tracking-widest">Scalability</h4>
                   <p className="text-gray-400 text-lg">
-                    Lorem ipsum Lorem ipsum is a dummy text for temp use only
+                    Our structured production pipelines ensure consistent, scalable, and production-ready assets.
                   </p>
                 </div>
               </div>
@@ -396,7 +391,7 @@ export function AboutUS() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{
                   opacity: 1,
-                  y: [0, -15, 0],   // up and down motion
+                  y: [0, -15, 0],
                 }}
                 transition={{
                   opacity: { duration: 1 },
@@ -415,9 +410,9 @@ export function AboutUS() {
               <div className="flex items-start gap-4">
                 <img src={Symbol4} alt="" loading="lazy" decoding="async" className="w-20 h-20" />
                 <div>
-                  <h4 className="font-semibold text-2xl tracking-widest">Lorem Ipsum</h4>
+                  <h4 className="font-semibold text-2xl tracking-widest">Expertise</h4>
                   <p className="text-gray-400 text-lg">
-                    Lorem ipsum Lorem ipsum is a dummy text for temp use only
+                    We specialize in slot game art, cinematic visuals, and immersive storytelling design.
                   </p>
                 </div>
               </div>
@@ -425,9 +420,9 @@ export function AboutUS() {
               <div className="flex items-start gap-4">
                 <img src={Symbol5} alt="" loading="lazy" decoding="async" className="w-20 h-20" />
                 <div>
-                  <h4 className="font-semibold text-2xl tracking-widest">Lorem Ipsum</h4>
+                  <h4 className="font-semibold text-2xl tracking-widest">Precision</h4>
                   <p className="text-gray-400 text-lg">
-                    Lorem ipsum Lorem ipsum is a dummy text for temp use only
+                    We combine creative excellence with technical accuracy to elevate every gaming experience.
                   </p>
                 </div>
               </div>

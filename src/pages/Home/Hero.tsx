@@ -80,8 +80,9 @@ export function Hero() {
               variants={slideLeft}
               className="text-muted-foreground text-lg sm:text-lg lg:text-xl max-w-xl leading-relaxed"
             >
-              Moonglade Atelier is a premium game art and animation studio
-              crafting stunning visuals for the world’s most ambitious gaming projects.
+              Moonglade Atelier is a leading game art outsourcing studio
+              specializing in slot game art, 2D game assets, character design,
+              and animation services for global game developers.
             </motion.p>
 
             <motion.div variants={slideLeft}>

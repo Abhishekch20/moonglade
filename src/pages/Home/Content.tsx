@@ -69,7 +69,7 @@ export function ContentSection() {
           className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl font-bold text-foreground max-w-5xl mb-6 sm:mb-8 
           bg-gradient-to-r from-[#5816bb] via-[#B04C58] via-[rgb(182,88,65)] via-[#E46F1E] to-[#e8900d] text-transparent bg-clip-text"
         >
-          2D/3D Animation and Game Art Production.
+          2D Animation and Game Art Production.
         </motion.h2>
 
         {/* Paragraph */}
@@ -77,8 +77,9 @@ export function ContentSection() {
           variants={slideLeft}
           className="text-muted-foreground text-base sm:text-lg md:text-xl max-w-3xl mb-10 sm:mb-14 font-body leading-relaxed"
         >
-          Moonglade is a full studio providing{" "}
-          <span className="text-foreground font-semibold">ONLY HIGH-QUALITY</span> 3D/2D Animation and Game Art Services.
+          Moonglade Atelier is a full-service game art outsourcing studio
+          delivering high-quality 2D animation and game art services for
+          studios worldwide.
         </motion.p>
 
         {/* Buttons Row */}

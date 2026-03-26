@@ -54,8 +54,8 @@ const serviceSections = [
     imageAlt: "Concept Art",
     imageFirst: false,
     paragraphs: [
-      "Moonglade Atelier began with a simple belief - strong stories and powerful visuals make games unforgettable. With over 12 years of industry experience, two brothers turned a late-night dream into a growing creative studio.",
-      "Today, we deliver game art, animation, and cinematic visuals for clients worldwide, blending artistic passion with technical precision.",
+      "Moonglade Atelier delivers high-quality concept art for games, transforming ideas into visually compelling characters, environments, and assets. With over 12 years of industry experience, we help game studios define strong visual direction and storytelling from the earliest stages of production.",
+      "We combine artistic creativity with technical precision to create production-ready concept art that guides the entire game development pipeline.",
     ],
   },
   {
@@ -65,8 +65,8 @@ const serviceSections = [
     imageAlt: "Game Art",
     imageFirst: true,
     paragraphs: [
-      "Moonglade Atelier began with a simple belief - strong stories and powerful visuals make games unforgettable. With over 12 years of industry experience, two brothers turned a late-night dream into a growing creative studio.",
-      "Today, we deliver game art, animation, and cinematic visuals for clients worldwide, blending artistic passion with technical precision. Every project we take on is crafted with care, creativity, and purpose.",
+      "Moonglade Atelier delivers high-quality game art outsourcing services, including 2D/3D game assets, environments, props, and visual elements tailored for modern game development. We help studios create engaging, production-ready visuals that enhance gameplay and player experience.",
+      "Every asset is crafted with attention to detail, strong art direction, and technical precision to ensure seamless integration into game pipelines.",
     ],
   },
   {
@@ -76,8 +76,8 @@ const serviceSections = [
     imageAlt: "Animation",
     imageFirst: false,
     paragraphs: [
-      "We create fluid character animations, cinematic storytelling, and engaging motion visuals tailored for modern gaming.",
-      "Every movement is carefully designed to elevate immersion and emotional impact.",
+      "Moonglade Atelier delivers high-quality game animation services, including character animation, cinematic sequences, and motion design tailored for modern games. We create smooth, performance-optimized animations that enhance gameplay and player engagement.",
+      "Every movement is crafted with precision to elevate immersion, storytelling, and overall visual impact.",
     ],
   },
   {
@@ -87,8 +87,8 @@ const serviceSections = [
     imageAlt: "Creative Support",
     imageFirst: true,
     paragraphs: [
-      "We collaborate with global studios providing scalable art production and technical pipeline support.",
-      "Whether long-term partnership or short sprint support, we integrate seamlessly into your workflow.",
+      "Moonglade Atelier provides scalable creative support and game art outsourcing services, helping studios extend their production capacity with high-quality assets and technical pipeline integration.",
+      "Whether it’s long-term collaboration or short-term production support, we seamlessly integrate into your workflow to ensure consistent and efficient delivery.",
     ],
   },
   {
@@ -98,8 +98,8 @@ const serviceSections = [
     imageAlt: "Porting",
     imageFirst: false,
     paragraphs: [
-      "We help studios migrate games across platforms while preserving performance, visuals, and player experience.",
-      "From optimization to cross-platform compatibility, we ensure smooth transitions and technical excellence.",
+      "Moonglade Atelier provides game porting and migration services, helping studios adapt games across platforms while preserving performance, visuals, and user experience.",
+      "From optimization to cross-platform compatibility, we ensure smooth transitions with minimal disruption and high technical accuracy.",
     ],
   },
 ];
@@ -216,16 +216,16 @@ export default function Services() {
                 variants={slideLeft}
                 className="text-gray-300 text-lg max-w-xl mx-auto lg:mx-0"
               >
-                Moonglade Atelier began with a simple belief - strong stories and
-                powerful visuals make games unforgettable.
+                Moonglade Atelier is a game art outsourcing studio delivering
+                high-quality 2D/3D game art, animation, and cinematic visuals.
               </motion.p>
 
               <motion.p
                 variants={slideLeft}
                 className="text-gray-300 text-lg max-w-xl mx-auto lg:mx-0"
               >
-                Today, we deliver game art, animation, and cinematic visuals for
-                clients worldwide.
+                We help game studios worldwide create engaging, production-ready
+                assets that enhance player experiences.
               </motion.p>
             </motion.div>
 

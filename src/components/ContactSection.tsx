@@ -89,9 +89,10 @@ export default function GetInTouch() {
             className="mt-8 text-base sm:text-lg md:text-xl
                  text-gray-400 leading-relaxed max-w-3xl mx-auto"
           >
-            Have an idea, a project, or a career goal in mind?
+            Have a game idea or project in mind?
             <br />
-            Our team is ready to turn concepts into powerful game experiences.
+            Our game art outsourcing studio specializes in 2D/3D animation,
+            slot game art, and production-ready assets to bring your vision to life.
           </p>
         </div>
       </section>
