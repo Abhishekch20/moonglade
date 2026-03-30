@@ -1,19 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
-import blueryu from "@/assets/blueryu.png";
-import greenRyu from "@/assets/greenryu.png";
+import blueryu from "@/assets/blueryu.webp";
+import greenRyu from "@/assets/greenryu.webp";
 import bgImage from "@/assets/Aboutus_bg.svg";
 
-import Symbol1 from "@/assets/Symbol1.png";
-import Symbol2 from "@/assets/Symbol2.png";
-import Symbol3 from "@/assets/Symbol3.png";
-import Symbol4 from "@/assets/Symbol4.png";
-import Symbol5 from "@/assets/Symbol5.png";
+import Symbol1 from "@/assets/Symbol1.webp";
+import Symbol2 from "@/assets/Symbol2.webp";
+import Symbol3 from "@/assets/Symbol3.webp";
+import Symbol4 from "@/assets/Symbol4.webp";
+import Symbol5 from "@/assets/Symbol5.webp";
 
-import img1 from "@/assets/Howwedo.png";
-import img2 from "@/assets/Whatwedo.png";
-import img3 from "@/assets/Whoweare.png";
+import img1 from "@/assets/blue_moonglade.webp";
+import img2 from "@/assets/red_moonglade.webp";
+import img3 from "@/assets/green_moonglade.webp";
 
 /* -------------------------------
    Animation Variants
@@ -291,13 +291,15 @@ export function AboutUS() {
                     className={`flex flex-col ${isLeft ? "md:flex-row" : "md:flex-row-reverse"
                       } items-center gap-12`}
                   >
-                    <img
-                      src={card.image}
-                      alt={card.title}
-                      loading="lazy"
-                      decoding="async"
-                      className="w-48 md:w-64"
-                    />
+                    <div className="flex h-[220px] w-[220px] items-center justify-center md:h-[280px] md:w-[280px]">
+                      <img
+                        src={card.image}
+                        alt={card.title}
+                        loading="lazy"
+                        decoding="async"
+                        className="h-full w-full object-contain"
+                      />
+                    </div>
 
                     <div className="flex-1 space-y-4">
                       <h2 className="text-5xl font-bold text-[#f64242] uppercase">

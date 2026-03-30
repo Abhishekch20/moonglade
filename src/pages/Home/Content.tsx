@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import bg1 from "@/assets/1GameBG.jpg";
+import bg1 from "@/assets/1GameBG.webp";
 import { Link } from "react-router-dom";
 
 /* ---------------------------------

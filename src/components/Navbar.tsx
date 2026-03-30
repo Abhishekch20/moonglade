@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.webp";
 
 const services = [
   { name: "Concept Art", href: "/Services/Art" },
@@ -18,7 +18,7 @@ export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass ">
+    <nav className="fixed top-3 left-3 right-3 lg:left-10 lg:right-10 z-50 overflow-visible rounded-2xl glass">
       <div className="container mx-auto px-6 lg:px-12 " >
         <div className="flex items-center justify-between h-20">
           {/* Logo */}

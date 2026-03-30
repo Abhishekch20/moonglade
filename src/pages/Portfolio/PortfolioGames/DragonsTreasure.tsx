@@ -1,20 +1,20 @@
 
 import PageLayout from "@/components/PageLayout";
 import { Button } from "@/components/ui/button";
-import heavenlydragons from "@/assets/heavenlydragons.jpg";
-import dragon1Mobile from "@/assets/dragon1Mobile.png";
+import heavenlydragons from "@/assets/heavenlydragons.webp";
+import dragon1Mobile from "@/assets/dragon1Mobile.webp";
 import HeavenlyDragonsSection from "../Gameoverview";
 
-import Img1 from "@/assets/Dragons-game-imgs/d1.png"
-import Img2 from "@/assets/Dragons-game-imgs/d2.png"
-import Img3 from "@/assets/Dragons-game-imgs/d3.png"
-import Img4 from "@/assets/Dragons-game-imgs/d4.png"
-import Img5 from "@/assets/Dragons-game-imgs/d5.png"
-import Img6 from "@/assets/Dragons-game-imgs/d6.png"
-import Img7 from "@/assets/Dragons-game-imgs/d7.png"
-import Img8 from "@/assets/Dragons-game-imgs/d8.png"
-import Img9 from "@/assets/Dragons-game-imgs/d9.png"
-import Img10 from "@/assets/Dragons-game-imgs/d10.png"
+import Img1 from "@/assets/Dragons-game-imgs/d1.webp"
+import Img2 from "@/assets/Dragons-game-imgs/d2.webp"
+import Img3 from "@/assets/Dragons-game-imgs/d3.webp"
+import Img4 from "@/assets/Dragons-game-imgs/d4.webp"
+import Img5 from "@/assets/Dragons-game-imgs/d5.webp"
+import Img6 from "@/assets/Dragons-game-imgs/d6.webp"
+import Img7 from "@/assets/Dragons-game-imgs/d7.webp"
+import Img8 from "@/assets/Dragons-game-imgs/d8.webp"
+import Img9 from "@/assets/Dragons-game-imgs/d9.webp"
+import Img10 from "@/assets/Dragons-game-imgs/d10.webp"
 
 
 

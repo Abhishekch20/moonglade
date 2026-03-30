@@ -1,18 +1,18 @@
 
 import PageLayout from "@/components/PageLayout";
 import { Button } from "@/components/ui/button";
-import heavenlydragons from "@/assets/heavenlydragons.jpg";
-import dragon1Mobile from "@/assets/dragon1Mobile.png";
+import heavenlydragons from "@/assets/heavenlydragons.webp";
+import dragon1Mobile from "@/assets/dragon1Mobile.webp";
 
 /* images */
-import Img1 from "@/assets/Jurassic-game-imgs/j1.png"
-import Img2 from "@/assets/Jurassic-game-imgs/j2.png"
-import Img3 from "@/assets/Jurassic-game-imgs/j3.png"
-import Img4 from "@/assets/Jurassic-game-imgs/j4.png"
-import Img5 from "@/assets/Jurassic-game-imgs/j5.png"
-import Img6 from "@/assets/Jurassic-game-imgs/j6.png"
-import Img7 from "@/assets/Jurassic-game-imgs/j7.png"
-import Img8 from "@/assets/Jurassic-game-imgs/j8.png"
+import Img1 from "@/assets/Jurassic-game-imgs/j1.webp"
+import Img2 from "@/assets/Jurassic-game-imgs/j2.webp"
+import Img3 from "@/assets/Jurassic-game-imgs/j3.webp"
+import Img4 from "@/assets/Jurassic-game-imgs/j4.webp"
+import Img5 from "@/assets/Jurassic-game-imgs/j5.webp"
+import Img6 from "@/assets/Jurassic-game-imgs/j6.webp"
+import Img7 from "@/assets/Jurassic-game-imgs/j7.webp"
+import Img8 from "@/assets/Jurassic-game-imgs/j8.webp"
 
 
 

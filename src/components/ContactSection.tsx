@@ -1,5 +1,5 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
-import placeholderImg from "../assets/blue_moonglade.png";
+import placeholderImg from "../assets/blue_moonglade.webp";
 import { Button } from "@/components/ui/button";
 import { submitContactForm } from "@/lib/contactForm";
 
@@ -10,6 +10,11 @@ type ContactFormData = {
   phone: string;
   message: string;
 };
+
+type SubmissionState = {
+  type: "success" | "error";
+  message: string;
+} | null;
 
 const initialFormData: ContactFormData = {
   firstName: "",
@@ -24,6 +29,7 @@ const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export default function GetInTouch() {
   const [formData, setFormData] = useState<ContactFormData>(initialFormData);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submissionState, setSubmissionState] = useState<SubmissionState>(null);
 
   const handleInputChange = (field: keyof ContactFormData) => {
     return (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -46,26 +52,37 @@ export default function GetInTouch() {
     };
 
     if (!trimmedFormData.firstName || !trimmedFormData.lastName || !trimmedFormData.email || !trimmedFormData.message) {
-      window.alert("Please fill in your first name, last name, email, and message.");
+      setSubmissionState({
+        type: "error",
+        message: "Please fill in your first name, last name, email, and message.",
+      });
       return;
     }
 
     if (!emailPattern.test(trimmedFormData.email)) {
-      window.alert("Please enter a valid email address.");
+      setSubmissionState({
+        type: "error",
+        message: "Please enter a valid email address.",
+      });
       return;
     }
 
     setIsSubmitting(true);
+    setSubmissionState(null);
 
     try {
       await submitContactForm(trimmedFormData);
 
       setFormData(initialFormData);
-      window.alert("Thanks. Your message has been sent.");
+      setSubmissionState({
+        type: "success",
+        message: "Thanks. Your message has been sent.",
+      });
     } catch (error) {
-      window.alert(
-        error instanceof Error ? error.message : "Unable to send your message right now.",
-      );
+      setSubmissionState({
+        type: "error",
+        message: error instanceof Error ? error.message : "Unable to send your message right now.",
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -248,6 +265,23 @@ export default function GetInTouch() {
                 </div>
               </form>
             </div>
+
+            {submissionState && (
+              <div className="pointer-events-none absolute bottom-0 left-6 right-6 z-20 flex justify-center translate-y-[110%]">
+                <div
+                  className={`w-full max-w-[640px] rounded-2xl border px-5 py-4 text-sm shadow-[0_18px_60px_rgba(0,0,0,0.45)] backdrop-blur-md sm:text-base ${
+                    submissionState.type === "success"
+                      ? "border-emerald-400/40 bg-emerald-500/15 text-emerald-200"
+                      : "border-rose-400/40 bg-rose-500/15 text-rose-200"
+                  }`}
+                >
+                  <div className="font-display tracking-wide uppercase text-xs sm:text-sm opacity-80">
+                    {submissionState.type === "success" ? "Message Sent" : "Submission Error"}
+                  </div>
+                  <p className="mt-2 leading-relaxed">{submissionState.message}</p>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* BOTTOM-RIGHT ACCENT */}

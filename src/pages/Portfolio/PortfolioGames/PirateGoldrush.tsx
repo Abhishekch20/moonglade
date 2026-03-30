@@ -1,19 +1,19 @@
 
 import PageLayout from "@/components/PageLayout";
 import { Button } from "@/components/ui/button";
-import heavenlydragons from "@/assets/heavenlydragons.jpg";
-import dragon1Mobile from "@/assets/dragon1Mobile.png";
+import heavenlydragons from "@/assets/heavenlydragons.webp";
+import dragon1Mobile from "@/assets/dragon1Mobile.webp";
 import HeavenlyDragonsSection from "../Gameoverview";
 
 /* images */
-import Img1 from "@/assets/Pirates-game-imgs/p1.png"
-import Img2 from "@/assets/Pirates-game-imgs/p2.png"
-import Img3 from "@/assets/Pirates-game-imgs/p3.png"
-import Img4 from "@/assets/Pirates-game-imgs/p4.png"
-import Img5 from "@/assets/Pirates-game-imgs/p5.png"
-import Img6 from "@/assets/Pirates-game-imgs/p6.png"
-import Img7 from "@/assets/Pirates-game-imgs/p7.png"
-import Img8 from "@/assets/Pirates-game-imgs/p8.png"
+import Img1 from "@/assets/Pirates-game-imgs/p1.webp"
+import Img2 from "@/assets/Pirates-game-imgs/p2.webp"
+import Img3 from "@/assets/Pirates-game-imgs/p3.webp"
+import Img4 from "@/assets/Pirates-game-imgs/p4.webp"
+import Img5 from "@/assets/Pirates-game-imgs/p5.webp"
+import Img6 from "@/assets/Pirates-game-imgs/p6.webp"
+import Img7 from "@/assets/Pirates-game-imgs/p7.webp"
+import Img8 from "@/assets/Pirates-game-imgs/p8.webp"
 
 
 export default function PirateGoldrush() {

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useRef, useState, type FormEvent } from "react";
 import bgImage from "@/assets/contact_us_bg.svg";
-import chestImg from "@/assets/Treasurechest.png";
+import chestImg from "@/assets/Treasurechest.webp";
 import { Button } from "@/components/ui/button";
 import { submitContactForm } from "@/lib/contactForm";
 
@@ -34,6 +34,11 @@ type FlyData = {
   endY: number;
 };
 
+type SubmissionState = {
+  type: "success" | "error";
+  message: string;
+} | null;
+
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export function ContactUS() {
@@ -42,6 +47,7 @@ export function ContactUS() {
   const [flyData, setFlyData] = useState<FlyData | null>(null);
   const [flyingEmail, setFlyingEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submissionState, setSubmissionState] = useState<SubmissionState>(null);
 
   const inputRef = useRef<HTMLInputElement | null>(null);
   const chestRef = useRef<HTMLImageElement | null>(null);
@@ -74,27 +80,38 @@ export function ContactUS() {
     const trimmedEmail = email.trim();
 
     if (!trimmedEmail) {
-      window.alert("Please enter your email address.");
+      setSubmissionState({
+        type: "error",
+        message: "Please enter your email address.",
+      });
       return;
     }
 
     if (!emailPattern.test(trimmedEmail)) {
-      window.alert("Please enter a valid email address.");
+      setSubmissionState({
+        type: "error",
+        message: "Please enter a valid email address.",
+      });
       return;
     }
 
     setIsSubmitting(true);
+    setSubmissionState(null);
 
     try {
       await submitContactForm({ email: trimmedEmail });
 
       startChestAnimation(trimmedEmail);
       setEmail("");
-      window.alert("Thanks. Your email has been sent to the team.");
+      setSubmissionState({
+        type: "success",
+        message: "Thanks. Your email has been sent to the team.",
+      });
     } catch (error) {
-      window.alert(
-        error instanceof Error ? error.message : "Unable to send your message right now.",
-      );
+      setSubmissionState({
+        type: "error",
+        message: error instanceof Error ? error.message : "Unable to send your message right now.",
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -165,6 +182,21 @@ export function ContactUS() {
               </p>
 
               <form onSubmit={handleContinue}>
+                {submissionState && (
+                  <div
+                    className={`mb-6 rounded-2xl border px-5 py-4 text-sm md:text-base ${
+                      submissionState.type === "success"
+                        ? "border-emerald-400/40 bg-emerald-500/10 text-emerald-200"
+                        : "border-rose-400/40 bg-rose-500/10 text-rose-200"
+                    }`}
+                  >
+                    <div className="font-display text-xs uppercase tracking-[0.2em] opacity-80">
+                      {submissionState.type === "success" ? "Message Sent" : "Submission Error"}
+                    </div>
+                    <p className="mt-2 leading-relaxed">{submissionState.message}</p>
+                  </div>
+                )}
+
                 <div className="flex flex-col sm:flex-row gap-4">
                   <input
                     ref={inputRef}

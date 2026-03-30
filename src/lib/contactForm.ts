@@ -1,4 +1,4 @@
-const contactEndpoint = "https://formsubmit.co/ajax/abhishekchiluveru1@gmail.com";
+const contactEndpoint = "https://formsubmit.co/ajax/contact@moonglade.co.in";
 
 type ContactSubmission = {
   firstName?: string;

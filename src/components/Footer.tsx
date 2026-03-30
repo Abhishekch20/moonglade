@@ -7,7 +7,7 @@ import {
   Twitter,
   Linkedin,
 } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.webp";
 import { Link } from "react-router-dom";
 
 const Footer = () => {

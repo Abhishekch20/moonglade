@@ -5,7 +5,7 @@ import { ChevronRight } from "lucide-react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
-import img3 from "@/assets/Anubis.png";
+import img3 from "@/assets/Anubis.webp";
 
 /* ---------------------------------
    Animation Variants
@@ -82,7 +82,7 @@ Our global experience of developing art for markets like Europe, US, Asia, and A
   const paragraphLines = paragraphText.split("\n\n");
 
   return (
-    <section id="about" className="relative py-24 sm:py-32 lg:py-40 bg-background overflow-hidden">
+    <section id="about" className="relative py-24 sm:py-32 lg:py-16 bg-background overflow-hidden">
       <div className="container relative z-10 px-6 sm:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-center">
           {/* LEFT: IMAGE */}

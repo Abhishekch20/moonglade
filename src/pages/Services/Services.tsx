@@ -2,14 +2,28 @@ import PageLayout from "../../components/PageLayout";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import bgImage from "@/assets/Aboutus_bg.svg";
-
-import animation2D from "@/assets/portfolioimg1.png";
-import animation3D from "@/assets/portfolioimg2.png";
-import kidsAnimation from "@/assets/portfolioimg3.png";
-import art2D from "@/assets/portfolioimg4.png";
-import art3D from "@/assets/portfolioimg5.png";
-import cinematic from "@/assets/portfolioimg6.png";
+import bgImage from "@/assets/ChinesegameBG.webp";
+import japaneseWoman from "@/assets/japanese_woman.webp";
+import animation2D from "@/assets/jester.webp";
+import animation3D from "@/assets/Group11.webp";
+import kidsAnimation from "@/assets/footerimg.webp";
+import art2D from "@/assets/egg1.webp";
+import art3D from "@/assets/blue_moonglade.webp";
+import cinematic from "@/assets/green_moonglade.webp";
+import symbolArt from "@/assets/red_moonglade.webp";
+import logoArt from "@/assets/Symbol4.webp";
+import wildArt from "@/assets/Symbol5.webp";
+import jadeLion from "@/assets/jade_lion.webp";
+import dragonEyeArt from "@/assets/Dragon-Eye.webp";
+import expertiseAnimation2D from "@/assets/d6.webp";
+import expertiseAnimation3D from "@/assets/bg_download.webp";
+import expertiseKidsAnimation from "@/assets/jj_bg_bonus_2.webp";
+import expertise2DArt from "@/assets/Chinese-game-BG-download.webp";
+import expertise3DArt from "@/assets/jj_bg_download.webp";
+import expertiseCinematic from "@/assets/11slide3.webp";
+import expertiseWebSlots from "@/assets/Dragons-game-imgs/d3.webp";
+import expertiseIGaming from "@/assets/careers-bg.webp";
+import expertiseArt from "@/assets/1GameBG.webp";
 
 const container = {
   hidden: {},
@@ -35,24 +49,25 @@ const fadeUp = {
 };
 
 const expertiseCards = [
-  { title: "2D ANIMATION", img: cinematic },
-  { title: "3D ANIMATION", img: art3D },
-  { title: "KIDS ANIMATION", img: art2D },
-  { title: "2D ART", img: animation3D },
-  { title: "3D ART", img: kidsAnimation },
-  { title: "CINEMATIC GAME TRAILER", img: animation2D },
-  { title: "WEB BASED SLOTS", img: art3D },
-  { title: "IGAMING", img: animation3D },
-  { title: "ART", img: cinematic },
+  { title: "2D ANIMATION", img: expertiseAnimation2D },
+  { title: "3D ANIMATION", img: expertiseAnimation3D },
+  { title: "KIDS ANIMATION", img: expertiseKidsAnimation },
+  { title: "2D ART", img: expertise2DArt },
+  { title: "3D ART", img: expertise3DArt },
+  { title: "CINEMATIC GAME TRAILER", img: expertiseCinematic },
+  { title: "WEB BASED SLOTS", img: expertiseWebSlots },
+  { title: "IGAMING", img: expertiseIGaming },
+  { title: "ART", img: expertiseArt },
 ];
 
 const serviceSections = [
   {
     title: "Concept Art",
     eyebrow: "Built From Passion. Driven By Craft.",
-    image: art2D,
+    image: jadeLion,
     imageAlt: "Concept Art",
     imageFirst: false,
+    imageClassName: "max-w-[380px]",
     paragraphs: [
       "Moonglade Atelier delivers high-quality concept art for games, transforming ideas into visually compelling characters, environments, and assets. With over 12 years of industry experience, we help game studios define strong visual direction and storytelling from the earliest stages of production.",
       "We combine artistic creativity with technical precision to create production-ready concept art that guides the entire game development pipeline.",
@@ -64,6 +79,7 @@ const serviceSections = [
     image: art2D,
     imageAlt: "Game Art",
     imageFirst: true,
+    imageClassName: "",
     paragraphs: [
       "Moonglade Atelier delivers high-quality game art outsourcing services, including 2D/3D game assets, environments, props, and visual elements tailored for modern game development. We help studios create engaging, production-ready visuals that enhance gameplay and player experience.",
       "Every asset is crafted with attention to detail, strong art direction, and technical precision to ensure seamless integration into game pipelines.",
@@ -75,6 +91,7 @@ const serviceSections = [
     image: animation2D,
     imageAlt: "Animation",
     imageFirst: false,
+    imageClassName: "",
     paragraphs: [
       "Moonglade Atelier delivers high-quality game animation services, including character animation, cinematic sequences, and motion design tailored for modern games. We create smooth, performance-optimized animations that enhance gameplay and player engagement.",
       "Every movement is crafted with precision to elevate immersion, storytelling, and overall visual impact.",
@@ -83,9 +100,10 @@ const serviceSections = [
   {
     title: "Creative Support",
     eyebrow: "Built From Passion. Driven By Craft.",
-    image: kidsAnimation,
+    image: dragonEyeArt,
     imageAlt: "Creative Support",
     imageFirst: true,
+    imageClassName: "",
     paragraphs: [
       "Moonglade Atelier provides scalable creative support and game art outsourcing services, helping studios extend their production capacity with high-quality assets and technical pipeline integration.",
       "Whether it’s long-term collaboration or short-term production support, we seamlessly integrate into your workflow to ensure consistent and efficient delivery.",
@@ -97,6 +115,7 @@ const serviceSections = [
     image: animation3D,
     imageAlt: "Porting",
     imageFirst: false,
+    imageClassName: "",
     paragraphs: [
       "Moonglade Atelier provides game porting and migration services, helping studios adapt games across platforms while preserving performance, visuals, and user experience.",
       "From optimization to cross-platform compatibility, we ensure smooth transitions with minimal disruption and high technical accuracy.",
@@ -110,6 +129,7 @@ function ServiceSection({
   image,
   imageAlt,
   imageFirst,
+  imageClassName,
   paragraphs,
 }: (typeof serviceSections)[number]) {
   const textBlock = (
@@ -118,15 +138,18 @@ function ServiceSection({
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
-      className="space-y-6 text-center lg:text-left"
+      className="mx-auto max-w-2xl space-y-5 px-2 text-center lg:mx-0 lg:max-w-[640px] lg:space-y-7 lg:px-4 lg:text-left"
     >
-      <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-bold text-white">
+      <motion.h2
+        variants={fadeUp}
+        className="text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl"
+      >
         {title}
       </motion.h2>
 
       <motion.h3
         variants={fadeUp}
-        className="text-xl md:text-2xl font-bold tracking-widest text-gray-300 uppercase"
+        className="text-base font-bold uppercase tracking-[0.24em] text-gray-300 sm:text-lg md:text-xl"
       >
         {eyebrow}
       </motion.h3>
@@ -135,7 +158,7 @@ function ServiceSection({
         <motion.p
           key={paragraph}
           variants={fadeUp}
-          className="text-gray-400 text-lg leading-relaxed"
+          className="text-base leading-8 text-gray-400 sm:text-lg lg:text-[1.15rem]"
         >
           {paragraph}
         </motion.p>
@@ -146,7 +169,7 @@ function ServiceSection({
           <Button
             variant="slanted"
             size="lg"
-            className="group tracking-widest mb-10 lg:mb-0 font-heading text-lg rounded-none w-[170px]"
+            className="group mb-8 w-[180px] rounded-none font-heading text-base tracking-[0.18em] sm:text-lg lg:mb-0"
           >
             View Portfolio
           </Button>
@@ -161,24 +184,24 @@ function ServiceSection({
       whileInView={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.45 }}
       viewport={{ once: true, amount: 0.2 }}
-      className={`flex justify-center ${imageFirst ? "lg:justify-start" : "lg:justify-end"}`}
+      className={`flex items-center justify-center px-2 ${imageFirst ? "lg:justify-start" : "lg:justify-end"}`}
     >
       <img
         src={image}
         alt={imageAlt}
         loading="lazy"
         decoding="async"
-        className="w-full max-w-[500px] object-contain"
+        className={`w-full object-contain ${imageClassName || "max-w-[520px]"}`}
       />
     </motion.div>
   );
 
   return (
     <section
-      className="content-auto relative z-10 mt-40 px-6"
+      className="content-auto relative z-10 mt-24 px-6 sm:mt-28 lg:mt-32"
       style={{ containIntrinsicSize: "900px" }}
     >
-      <div className="max-w-[1400px] mx-auto grid lg:grid-cols-2 gap-16 items-center">
+      <div className="mx-auto grid max-w-[1400px] items-center gap-10 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)] lg:gap-16">
         {imageFirst ? imageBlock : textBlock}
         {imageFirst ? textBlock : imageBlock}
       </div>
@@ -229,21 +252,15 @@ export default function Services() {
               </motion.p>
             </motion.div>
 
-            <div className="relative w-full h-[350px] md:h-[450px] lg:h-[500px]">
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                poster={cinematic}
-                className="w-full h-full object-contain"
-              >
-                <source
-                  src="https://res.cloudinary.com/dtee5yyvw/video/upload/q_auto,f_auto/v1771336143/Wildvideo_z2q6p8.mp4"
-                  type="video/mp4"
-                />
-              </video>
+            <div className="relative flex h-[350px] w-full items-center justify-center md:h-[450px] lg:h-[500px]">
+              <img
+                src={japaneseWoman}
+                alt="Japanese woman artwork"
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                className="h-full w-full object-contain"
+              />
             </div>
           </div>
         </div>
@@ -273,7 +290,7 @@ export default function Services() {
                     alt={item.title}
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-[240px] object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="h-[240px] w-full object-contain bg-[#111111ae] p-4 transition-transform duration-500 group-hover:scale-105"
                   />
 
                   <div className="absolute inset-0 bg-black/40 group-hover:opacity-0 transition" />

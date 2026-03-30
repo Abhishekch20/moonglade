@@ -1,25 +1,22 @@
 import PageLayout from "@/components/PageLayout";
 import { Button } from "@/components/ui/button";
-import j2 from "@/assets/Chinese-game-imgs/c6.png";
-import imgMain from "@/assets/Dragon-Eye.png";
-import imgWide from "@/assets/Dragon-Eye.png";
-import imgSmall from "@/assets/Dragon-Eye.png";
-import imgTall from "@/assets/Dragon-Eye.png";
-import imgRight from "@/assets/Dragon-Eye.png";
-import ctaBg from "@/assets/Dragon-Eye.png";
-import expImg from "@/assets/Isis.png";
-import bg1 from "@/assets/Dragon-Eye.png";
-import bg2 from "@/assets/Dragon-Eye.png";
-import bg3 from "@/assets/Dragon-Eye.png";
-import bg4 from "@/assets/Dragon-Eye.png";
-import bg5 from "@/assets/Dragon-Eye.png";
-import bg6 from "@/assets/Dragon-Eye.png";
-import icon1 from "@/assets/Dragon-Eye.png";
-import icon2 from "@/assets/Dragon-Eye.png";
-import icon3 from "@/assets/Dragon-Eye.png";
-import icon4 from "@/assets/Dragon-Eye.png";
-import icon5 from "@/assets/Dragon-Eye.png";
-import icon6 from "@/assets/Dragon-Eye.png";
+import j2 from "@/assets/Chinese-game-imgs/c6.webp";
+import imgMain from "@/assets/Wild.webp";
+import imgWide from "@/assets/h-main.webp";
+import imgBottom from "@/assets/osirislogo.webp";
+import expImg from "@/assets/Isis.webp";
+import bg1 from "@/assets/egg1.webp";
+import bg2 from "@/assets/footerimg.webp";
+import bg3 from "@/assets/Group11.webp";
+import bg4 from "@/assets/jester.webp";
+import bg5 from "@/assets/Wild.webp";
+import bg6 from "@/assets/WILD1.webp";
+import icon1 from "@/assets/Dragon-Eye.webp";
+import icon2 from "@/assets/Dragon-Eye.webp";
+import icon3 from "@/assets/Dragon-Eye.webp";
+import icon4 from "@/assets/Dragon-Eye.webp";
+import icon5 from "@/assets/Dragon-Eye.webp";
+import icon6 from "@/assets/Dragon-Eye.webp";
 import techstack from "@/assets/techstack.svg";
 
 type ServiceDetailTemplateProps = {
@@ -152,23 +149,16 @@ export default function ServiceDetailTemplate({
             Moonglade artists create assets across all popular game art styles, from doodle art to monochromatic designs. Our successful projects reflect a strong balance of creativity and experience. Here are some notable examples of our 2D game art.
           </p>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-10">
-            <div className="relative">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-10 mb-10 items-start">
+            <div className="relative flex justify-center rounded-xl bg-[#111] p-6">
               <img
                 src={imgMain}
                 alt="Main Art"
-                className="w-full h-full object-cover"
+                className="max-h-[640px] w-full object-contain"
               />
-
-              <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/80 to-transparent rounded-b-xl">
-                <p className="text-gray-300 text-sm">
-                  Lorem ipsum is a dummy text. Lorem ipsum is a dummy Lorem ipsum
-                  is a dummy text. Lorem ipsum is a dummy.
-                </p>
-              </div>
             </div>
 
-            <div className="bg-[#111] p-8 grid grid-cols-2 gap-4 h-fit">
+            <div className="bg-[#111] p-8 grid grid-cols-2 gap-4 h-fit self-center">
               <button className="bg-[#1a1a1a] border border-gray-600 py-5 hover:bg-white hover:text-black transition text-xl">Character Design</button>
               <button className="bg-[#1a1a1a] border border-gray-600 py-5 hover:bg-white hover:text-black transition text-xl">Environment Design</button>
               <button className="bg-[#1a1a1a] border border-gray-600 py-5 hover:bg-white hover:text-black transition text-xl">Game Elements Design</button>
@@ -186,49 +176,12 @@ export default function ServiceDetailTemplate({
             />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-            <div className="space-y-8">
-              <img
-                src={imgSmall}
-                alt="Art small"
-                className="w-full rounded-xl object-cover"
-              />
-
-              <div className="relative rounded-xl overflow-hidden">
-                <img
-                  src={ctaBg}
-                  alt="CTA background"
-                  className="w-full h-full object-cover"
-                />
-
-                <div className="absolute inset-0 bg-black/80"></div>
-
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-                  <p className="text-lg font-semibold mb-3">
-                    Lets Work <br /> Together
-                  </p>
-                  <button className="bg-white text-black px-4 py-2 rounded-md hover:bg-gray-200 transition">
-                    Get started
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <img
-                src={imgTall}
-                alt="Tall art"
-                className="w-full rounded-xl object-cover"
-              />
-            </div>
-
-            <div>
-              <img
-                src={imgRight}
-                alt="Right art"
-                className="w-full rounded-xl object-cover"
-              />
-            </div>
+          <div>
+            <img
+              src={imgBottom}
+              alt="Osiris logo artwork"
+              className="w-full rounded-xl object-cover"
+            />
           </div>
         </div>
       </section>
@@ -288,10 +241,11 @@ export default function ServiceDetailTemplate({
                 transition-all duration-300
               "
               >
-                <div className="relative w-[full] h-50 overflow-hidden">
+                <div className="relative h-[280px] w-full overflow-hidden bg-[#0f0f0f]">
                   <img
                     src={item.image}
-                    className="w-full h-full object-cover opacity-50"
+                    alt={item.title}
+                    className="h-full w-full object-contain p-4 opacity-80"
                   />
 
                   <div

@@ -1,18 +1,18 @@
 
 import PageLayout from "@/components/PageLayout";
 import { Button } from "@/components/ui/button";
-import heavenlydragons from "@/assets/heavenlydragons.jpg";
-import dragon1Mobile from "@/assets/dragon1Mobile.png";
+import heavenlydragons from "@/assets/heavenlydragons.webp";
+import dragon1Mobile from "@/assets/dragon1Mobile.webp";
 import HeavenlyDragonsSection from "../Gameoverview";
 
 /* images */
-import Img1 from "@/assets/Chinese-game-imgs/c1.png"
-import Img2 from "@/assets/Chinese-game-imgs/c2.png"
-import Img3 from "@/assets/Chinese-game-imgs/c3.png"
-import Img4 from "@/assets/Chinese-game-imgs/c4.png"
-import Img5 from "@/assets/Chinese-game-imgs/c5.png"
-import Img6 from "@/assets/Chinese-game-imgs/c6.png"
-import Img7 from "@/assets/Chinese-game-imgs/c7.png"
+import Img1 from "@/assets/Chinese-game-imgs/c1.webp"
+import Img2 from "@/assets/Chinese-game-imgs/c2.webp"
+import Img3 from "@/assets/Chinese-game-imgs/c3.webp"
+import Img4 from "@/assets/Chinese-game-imgs/c4.webp"
+import Img5 from "@/assets/Chinese-game-imgs/c5.webp"
+import Img6 from "@/assets/Chinese-game-imgs/c6.webp"
+import Img7 from "@/assets/Chinese-game-imgs/c7.webp"
 
 
 export default function HeavenlyDragons() {

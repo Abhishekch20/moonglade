@@ -1,21 +1,21 @@
 import { lazy, Suspense, useEffect, useRef, useState, type ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
 import PageLayout from "../../components/PageLayout";
-import dragon1 from "@/assets/five.jpg";
-import dragon1Mobile from "@/assets/dragon1Mobile.png";
-import card1 from "@/assets/projectimg1.png";
-import card2 from "@/assets/projectimg2.png";
-import card3 from "@/assets/projectimg3.png";
-import card4 from "@/assets/projectimg4.png";
-import card5 from "@/assets/projectimg5.png";
-import card6 from "@/assets/projectimg6.png";
+import dragon1 from "@/assets/five.webp";
+import dragon1Mobile from "@/assets/dragon1Mobile.webp";
+import card1 from "@/assets/projectimg1.webp";
+import card2 from "@/assets/projectimg2.webp";
+import card3 from "@/assets/projectimg3.webp";
+import card4 from "@/assets/projectimg4.webp";
+import card5 from "@/assets/projectimg5.webp";
+import card6 from "@/assets/projectimg6.webp";
 import { Button } from "@/components/ui/button";
-import groupimg1 from "@/assets/Group-1.png"
-import groupimg2 from "@/assets/Group-2.png"
-import groupimg3 from "@/assets/Group-3.png"
+import groupimg1 from "@/assets/Group-1.webp"
+import groupimg2 from "@/assets/Group-2.webp"
+import groupimg3 from "@/assets/Group-3.webp"
 
-import mainImg1 from "@/assets/h-main.png"
-import mainImg2 from "@/assets/o-main.png"
+import mainImg1 from "@/assets/h-main.webp"
+import mainImg2 from "@/assets/o-main.webp"
 
 const portfolioVideoUrl =
   "https://res.cloudinary.com/dtee5yyvw/video/upload/q_auto,f_auto/v1773842596/portfoliovideo_keztw6.mp4";

@@ -1,11 +1,11 @@
 
 import { useEffect, useRef } from "react";
 import InfiniteGallery from "@/components/ui/3d-gallery-photography";
-import gallery1 from "../assets/Chinese-game-imgs/c1.png";
-import gallery2 from "../assets/Chinese-game-imgs/c2.png";
-import gallery3 from "../assets/Chinese-game-imgs/c3.png";
-import gallery4 from "../assets/Chinese-game-imgs/c4.png";
-import gallery5 from "../assets/Chinese-game-imgs/c5.png";
+import gallery1 from "../assets/Chinese-game-imgs/c1.webp";
+import gallery2 from "../assets/Chinese-game-imgs/c2.webp";
+import gallery3 from "../assets/Chinese-game-imgs/c3.webp";
+import gallery4 from "../assets/Chinese-game-imgs/c4.webp";
+import gallery5 from "../assets/Chinese-game-imgs/c5.webp";
 
 
 const sampleImages = [

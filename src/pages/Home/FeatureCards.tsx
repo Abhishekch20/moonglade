@@ -11,12 +11,12 @@ import {
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 
-import img1 from "@/assets/slideshow/one.png";
-import img2 from "@/assets/slideshow/two.png";
-import img3 from "@/assets/slideshow/three.png";
-import img4 from "@/assets/slideshow/four.png";
-import img5 from "@/assets/slideshow/five.jpg";
-import img6 from "@/assets/slideshow/six.png";
+import img1 from "@/assets/slideshow/one.webp";
+import img2 from "@/assets/slideshow/two.webp";
+import img3 from "@/assets/slideshow/three.webp";
+import img4 from "@/assets/slideshow/four.webp";
+import img5 from "@/assets/slideshow/five.webp";
+import img6 from "@/assets/slideshow/six.webp";
 
 const containerVariant = {
   hidden: {},

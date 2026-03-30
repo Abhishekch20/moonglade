@@ -2,14 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import empressImage from "@/assets/coin.png";
+import empressImage from "@/assets/coin.webp";
 import j2 from "@/assets/careers-bg.webp";
 // or .png / .webp
 
 
 /* images */
-import bgImage from "@/assets/d6.png"
-import coinImage from "@/assets/coin.png"
+import bgImage from "@/assets/d6.webp"
+import coinImage from "@/assets/coin.webp"
 
 
 /* -------------------------------

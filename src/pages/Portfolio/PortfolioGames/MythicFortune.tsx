@@ -1,18 +1,18 @@
 
 import PageLayout from "@/components/PageLayout";
 import { Button } from "@/components/ui/button";
-import heavenlydragons from "@/assets/heavenlydragons.jpg";
-import dragon1Mobile from "@/assets/dragon1Mobile.png";
+import heavenlydragons from "@/assets/heavenlydragons.webp";
+import dragon1Mobile from "@/assets/dragon1Mobile.webp";
 import HeavenlyDragonsSection from "../Gameoverview";
 
 /* images */
-import Img1 from "@/assets/Mythic-game-imgs/m1.png"
-import Img2 from "@/assets/Mythic-game-imgs/m2.png"
-import Img3 from "@/assets/Mythic-game-imgs/m3.png"
-import Img4 from "@/assets/Mythic-game-imgs/m4.png"
-import Img5 from "@/assets/Mythic-game-imgs/m5.png"
-import Img6 from "@/assets/Mythic-game-imgs/m6.png"
-import Img7 from "@/assets/Mythic-game-imgs/m7.png"
+import Img1 from "@/assets/Mythic-game-imgs/m1.webp"
+import Img2 from "@/assets/Mythic-game-imgs/m2.webp"
+import Img3 from "@/assets/Mythic-game-imgs/m3.webp"
+import Img4 from "@/assets/Mythic-game-imgs/m4.webp"
+import Img5 from "@/assets/Mythic-game-imgs/m5.webp"
+import Img6 from "@/assets/Mythic-game-imgs/m6.webp"
+import Img7 from "@/assets/Mythic-game-imgs/m7.webp"
 
 
 export default function MythicFortune() {

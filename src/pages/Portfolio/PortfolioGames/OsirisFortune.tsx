@@ -1,19 +1,19 @@
 
 import PageLayout from "@/components/PageLayout";
 import { Button } from "@/components/ui/button";
-import heavenlydragons from "@/assets/heavenlydragons.jpg";
-import dragon1Mobile from "@/assets/dragon1Mobile.png";
+import heavenlydragons from "@/assets/heavenlydragons.webp";
+import dragon1Mobile from "@/assets/dragon1Mobile.webp";
 import HeavenlyDragonsSection from "../Gameoverview";
 
 /* images */
-import Img1 from "@/assets/Osiris-game-imgs/o1.png"
-import Img2 from "@/assets/Osiris-game-imgs/o2.png"
-import Img3 from "@/assets/Osiris-game-imgs/o3.png"
-import Img4 from "@/assets/Osiris-game-imgs/o4.png"
-import Img5 from "@/assets/Osiris-game-imgs/o5.png"
-import Img6 from "@/assets/Osiris-game-imgs/o6.png"
-import Img7 from "@/assets/Osiris-game-imgs/o8.png"
-import mainBG from "@/assets/Osiris-game-imgs/main.png"
+import Img1 from "@/assets/Osiris-game-imgs/o1.webp"
+import Img2 from "@/assets/Osiris-game-imgs/o2.webp"
+import Img3 from "@/assets/Osiris-game-imgs/o3.webp"
+import Img4 from "@/assets/Osiris-game-imgs/o4.webp"
+import Img5 from "@/assets/Osiris-game-imgs/o5.webp"
+import Img6 from "@/assets/Osiris-game-imgs/o6.webp"
+import Img7 from "@/assets/Osiris-game-imgs/o8.webp"
+import mainBG from "@/assets/Osiris-game-imgs/main.webp"
 
 
 export default function OsirisFortune() {
