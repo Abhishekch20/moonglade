@@ -558,7 +558,7 @@ function FallbackGallery({ images }: { images: ImageItem[] }) {
 			</p>
 			<div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-h-96 overflow-y-auto">
 				{normalizedImages.map((img, i) => (
-					<img
+					<img loading="lazy" decoding="async"
 						key={i}
 						src={img.src || '/placeholder.svg'}
 						alt={img.alt}
@@ -629,3 +629,4 @@ export default function InfiniteGallery({
 		</div>
 	);
 }
+

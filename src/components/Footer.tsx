@@ -30,7 +30,7 @@ const Footer = () => {
 
           {/* CONTACT */}
           <div className="lg:col-span-4 space-y-5">
-            <img src={logo} alt="Moonglade" className="h-20" />
+            <img loading="lazy" decoding="async" src={logo} alt="Moonglade" className="h-20" />
 
             <div className="flex gap-3">
               <MapPin className="w-10 h-10 text-purple-500 mt-1" />
@@ -228,3 +228,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

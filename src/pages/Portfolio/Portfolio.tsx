@@ -187,7 +187,7 @@ export default function Portfolio() {
             onClick={() => go("/portfolio/dragons-treasure")}
             className="relative group rounded-xl overflow-hidden cursor-pointer"
           >
-            <img src={card3} alt="Dragon’s Treasure"
+            <img loading="lazy" decoding="async" src={card3} alt="Dragon’s Treasure"
               className="w-full h-full object-cover transition-all duration-500 brightness-[0.8] group-hover:brightness-125 group-hover:scale-110"
             />
 
@@ -442,3 +442,4 @@ export default function Portfolio() {
     </PageLayout>
   );
 }
+

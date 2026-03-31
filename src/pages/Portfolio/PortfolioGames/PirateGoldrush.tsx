@@ -26,6 +26,9 @@ export default function PirateGoldrush() {
           <img
             src={dragon1Mobile}
             alt=""
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
             className="w-full h-[85vh] md:h-full object-cover brightness-110"
           />
         </picture>
@@ -110,43 +113,43 @@ export default function PirateGoldrush() {
       {/* Images */}
       <div className="images bg-black">
         <div className="div1  lg:mx-20 ">
-          <img
+          <img loading="lazy" decoding="async"
             src={Img1}
             alt=""
             className=" h-[40vh] lg:h-full md:h-[100vh] bg-cover w-full brightness-110"
           />
-          <img
+          <img loading="lazy" decoding="async"
             src={Img2}
             alt=""
             className="h-[40vh] lg:h-[100vh] md:h-[100vh] bg-cover w-full brightness-110"
           />
-          <img
+          <img loading="lazy" decoding="async"
             src={Img3}
             alt=""
             className=" h-[40vh] lg:h-[100vh] md:h-[100vh] bg-cover w-full brightness-110"
           />
-          <img
+          <img loading="lazy" decoding="async"
             src={Img4}
             alt=""
             className=" h-[40vh] lg:h-[100vh] md:h-[100vh] bg-cover w-full brightness-110"
           />
-          <img
+          <img loading="lazy" decoding="async"
             src={Img5}
             alt=""
             className=" h-[40vh] lg:h-[100vh] md:h-[100vh] bg-cover w-full brightness-110"
           />
-          <img
+          <img loading="lazy" decoding="async"
             src={Img6}
             alt=""
             className=" h-[40vh] lg:h-[100vh] md:h-[100vh] bg-cover w-full brightness-110"
           />
         </div>
-        <img
+        <img loading="lazy" decoding="async"
           src={Img7}
           alt=""
           className=" h-full bg-cover w-full brightness-110"
         />
-        <img
+        <img loading="lazy" decoding="async"
           src={Img8}
           alt=""
           className=" h-full bg-cover w-full brightness-110"
@@ -155,3 +158,4 @@ export default function PirateGoldrush() {
     </PageLayout>
   );
 }
+

@@ -5,7 +5,7 @@ import { ChevronRight } from "lucide-react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
-import img3 from "@/assets/Anubis.webp";
+import img3 from "@/assets/img3.webp";
 
 /* ---------------------------------
    Animation Variants
@@ -93,7 +93,7 @@ Our global experience of developing art for markets like Europe, US, Asia, and A
             viewport={{ once: true, amount: 0.3 }}
             className="relative flex justify-center lg:justify-start"
           >
-            <img
+            <img loading="lazy" decoding="async"
               src={img3}
               className="h-auto w-4/5"
               alt="About section"
@@ -153,3 +153,4 @@ Our global experience of developing art for markets like Europe, US, Asia, and A
     </section>
   );
 }
+

@@ -227,7 +227,7 @@ export default function GetInTouch() {
 "
                   >
                     {/* BACKGROUND IMAGE */}
-                    <img
+                    <img loading="lazy" decoding="async"
                       src={placeholderImg}
                       alt=""
                       className="absolute inset-0 w-full h-full object-cover opacity-15 pointer-events-none"
@@ -323,3 +323,4 @@ function Input({ label, value, onChange, type = "text", disabled = false }: Inpu
     </div>
   );
 }
+
