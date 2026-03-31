@@ -106,7 +106,7 @@ export function Navbar() {
         <div className="container mx-auto px-6 py-4 space-y-4 text-xl">
           <div className="space-y-2">
             <Link to="/" className="block nav-link py-2 font-heading" onClick={closeMenus}>Home</Link>
-            <div className="rounded-xl border border-white/10 bg-white/5 px-4 py-3">
+            <div className="rounded-xl  py-3">
               <div className="flex items-center justify-between gap-4">
                 <Link
                   to="/services"
