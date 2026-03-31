@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import { Button } from "@/components/ui/button";
 import { ChevronDown, Menu, X } from "lucide-react";
@@ -16,39 +17,43 @@ const services = [
 export function Navbar() {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const closeMenus = () => {
+    setIsMobileMenuOpen(false);
+    setIsServicesOpen(false);
+  };
 
   return (
     <nav className="fixed top-3 left-3 right-3 lg:left-10 lg:right-10 z-50 overflow-visible rounded-2xl glass">
       <div className="container mx-auto px-6 lg:px-12 " >
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="/" className="flex items-center group">
+          <Link to="/" className="flex items-center group" onClick={closeMenus}>
             <img 
               src={logo} 
               alt="Moonglade Atelier" 
               className="h-16 lg:h-16 sm:h-8 lg:w-auto"
             />
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-8 text-lg">
-            <a href="/" className="nav-link py-2 font-heading">Home</a>
-            <a href="/about" className="nav-link py-2 font-heading">About Us</a>
+            <Link to="/" className="nav-link py-2 font-heading">Home</Link>
+            <Link to="/about" className="nav-link py-2 font-heading">About Us</Link>
             {/* Services Dropdown */}
             <div
               className="relative"
               onMouseEnter={() => setIsServicesOpen(true)}
               onMouseLeave={() => setIsServicesOpen(false)}
             >
-              <button className=" font-heading flex items-center gap-1 py-2">
-                <a href="/services" className="nav-link py-2 font-heading">Services</a>
+              <div className="font-heading flex items-center gap-1 py-2">
+                <Link to="/services" className="nav-link py-2 font-heading">Services</Link>
                 <ChevronDown
                   className={cn(
                     "w-4 h-4 transition-transform duration-300",
                     isServicesOpen && "rotate-180"
                   )}
                 />
-              </button>
+              </div>
               
               {/* Dropdown Menu */}
               <div
@@ -59,25 +64,25 @@ export function Navbar() {
               >
                 <div className="glass rounded-lg p-2 min-w-[200px] shadow-lg">
                   {services.map((service) => (
-                    <a
+                    <Link
                       key={service.name}
-                      href={service.href}
+                      to={service.href}
                       className="block px-4 py-2.5 my-1 text-sm text-foreground font-heading nav-link hover:text-foreground bg-muted rounded-md transition-colors"
                     >
                       {service.name}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>
             </div>
 
-            <a href="/portfolio" className="nav-link py-2 font-heading">Portfolio</a>
-            <a href="/blog" className="nav-link py-2 font-heading">Blogs</a>
+            <Link to="/portfolio" className="nav-link py-2 font-heading">Portfolio</Link>
+            <Link to="/blog" className="nav-link py-2 font-heading">Blogs</Link>
             
-            <a href="/careers" className="nav-link py-2 font-heading">Careers</a>
+            <Link to="/careers" className="nav-link py-2 font-heading">Careers</Link>
             
             <Button variant="slanted" size="default" className="px-6 font-heading">
-              <a href="/contact" className="tracking-widest text-base">Contact Us</a>
+              <Link to="/contact" className="tracking-widest text-base">Contact Us</Link>
             </Button>
           </div>
 
@@ -100,34 +105,47 @@ export function Navbar() {
       >
         <div className="container mx-auto px-6 py-4 space-y-4 text-xl">
           <div className="space-y-2">
-            <a href="/" className="block nav-link py-2 font-heading">Home</a>
-            <button
-              className="flex items-center justify-between w-full py-2 text-muted-foreground"
-              onClick={() => setIsServicesOpen(!isServicesOpen)}
-            >
-              Services
-              <ChevronDown className={cn("w-4 h-4 transition-transform", isServicesOpen && "rotate-180")} />
-            </button>
+            <Link to="/" className="block nav-link py-2 font-heading" onClick={closeMenus}>Home</Link>
+            <div className="rounded-xl border border-white/10 bg-white/5 px-4 py-3">
+              <div className="flex items-center justify-between gap-4">
+                <Link
+                  to="/services"
+                  className="nav-link py-1 font-heading text-lg tracking-wide text-foreground"
+                  onClick={closeMenus}
+                >
+                  Services
+                </Link>
+                <button
+                  type="button"
+                  className="flex items-center justify-center rounded-md p-2 text-foreground"
+                  onClick={() => setIsServicesOpen(!isServicesOpen)}
+                  aria-label="Toggle services menu"
+                >
+                  <ChevronDown className={cn("w-5 h-5 transition-transform", isServicesOpen && "rotate-180")} />
+                </button>
+              </div>
             {isServicesOpen && (
-              <div className="pl-4 space-y-2">
+              <div className="mt-3 space-y-2 border-t border-white/10 pt-3">
                 {services.map((service) => (
-                  <a
+                  <Link
                     key={service.name}
-                    href={service.href}
-                    className="block py-2 text-sm text-muted-foreground hover:text-foreground"
+                    to={service.href}
+                    onClick={closeMenus}
+                    className="block rounded-lg bg-black/20 px-3 py-2 font-heading text-sm tracking-wide text-foreground/90 transition hover:bg-white/10 hover:text-foreground"
                   >
                     {service.name}
-                  </a>
+                  </Link>
                 ))}
               </div>
             )}
+            </div>
           </div>
-          <a href="/portfolio" className="block py-2 nav-link font-heading">Portfolio</a>
-          <a href="/blog" className="block py-2 nav-link  font-heading">Blogs</a>
-          <a href="/about" className="block nav-link py-2 font-heading">About Us</a>
-          <a href="/careers" className="block nav-link py-2 font-heading">Careers</a>
+          <Link to="/portfolio" className="block py-2 nav-link font-heading" onClick={closeMenus}>Portfolio</Link>
+          <Link to="/blog" className="block py-2 nav-link font-heading" onClick={closeMenus}>Blogs</Link>
+          <Link to="/about" className="block nav-link py-2 font-heading" onClick={closeMenus}>About Us</Link>
+          <Link to="/careers" className="block nav-link py-2 font-heading" onClick={closeMenus}>Careers</Link>
           <Button variant="slanted" className="w-full mt-4 ">
-            <a href="/contact" className="tracking-widest font-heading text-lg">Contact Us</a>
+            <Link to="/contact" className="tracking-widest font-heading text-lg" onClick={closeMenus}>Contact Us</Link>
           </Button>
         </div>
       </div>
