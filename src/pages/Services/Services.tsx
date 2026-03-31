@@ -6,7 +6,7 @@ import bgImage from "@/assets/ChinesegameBG.webp";
 import japaneseWoman from "@/assets/japanese_woman.webp";
 import animation2D from "@/assets/jester.webp";
 import animation3D from "@/assets/Group11.webp";
-import kidsAnimation from "@/assets/footerimg.webp";
+import kidsAnimation from "@/assets/Monkey.webp";
 import art2D from "@/assets/egg1.webp";
 import art3D from "@/assets/blue_moonglade.webp";
 import cinematic from "@/assets/green_moonglade.webp";

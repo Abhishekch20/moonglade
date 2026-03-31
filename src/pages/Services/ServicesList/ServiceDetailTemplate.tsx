@@ -1,16 +1,19 @@
 import PageLayout from "@/components/PageLayout";
 import { Button } from "@/components/ui/button";
 import j2 from "@/assets/Chinese-game-imgs/c6.webp";
-import imgMain from "@/assets/Wild.webp";
-import imgWide from "@/assets/h-main.webp";
-import imgBottom from "@/assets/osirislogo.webp";
-import expImg from "@/assets/Isis.webp";
+import imgMain from "@/assets/cred3.webp";
+import imgWide from "@/assets/jester-BG.webp";
+import expImg from "@/assets/img4.webp";
 import bg1 from "@/assets/egg1.webp";
-import bg2 from "@/assets/footerimg.webp";
+import bg2 from "@/assets/Farmgirl.webp";
 import bg3 from "@/assets/Group11.webp";
 import bg4 from "@/assets/jester.webp";
-import bg5 from "@/assets/Wild.webp";
-import bg6 from "@/assets/WILD1.webp";
+import bg5 from "@/assets/HeavenlyDragonslogo.webp";
+import bg6 from "@/assets/AndekaFanda.webp";
+import symbol2 from "@/assets/Symbol2.webp";
+import symbol3 from "@/assets/Symbol3.webp";
+import symbol4 from "@/assets/Symbol4.webp";
+import symbol5 from "@/assets/Symbol5.webp";
 import icon1 from "@/assets/Dragon-Eye.webp";
 import icon2 from "@/assets/Dragon-Eye.webp";
 import icon3 from "@/assets/Dragon-Eye.webp";
@@ -62,6 +65,13 @@ const services = [
     image: bg6,
     icon: icon6,
   },
+];
+
+const desktopPortfolioSymbols = [
+  { src: symbol2, alt: "Portfolio symbol 2" },
+  { src: symbol3, alt: "Portfolio symbol 3" },
+  { src: symbol4, alt: "Portfolio symbol 4" },
+  { src: symbol5, alt: "Portfolio symbol 5" },
 ];
 
 export default function ServiceDetailTemplate({
@@ -122,14 +132,14 @@ export default function ServiceDetailTemplate({
           <div className="flex justify-center">
             <div className="relative w-[300px] md:w-[380px] lg:w-[420px]">
               <div className="absolute inset-0 -z-10">
-                <img
+                <img loading="lazy" decoding="async"
                   src={expImg}
                   alt="Experience Image"
                   className="w-full h-full object-cover rounded-xl"
                 />
               </div>
 
-              <img
+              <img loading="lazy" decoding="async"
                 src={expImg}
                 alt="Experience"
                 className="w-full h-full "
@@ -151,10 +161,10 @@ export default function ServiceDetailTemplate({
 
           <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-10 mb-10 items-start">
             <div className="relative flex justify-center rounded-xl bg-[#111] p-6">
-              <img
+              <img loading="lazy" decoding="async"
                 src={imgMain}
                 alt="Main Art"
-                className="max-h-[640px] w-full object-contain"
+                className="max-h-[460px] w-full object-contain"
               />
             </div>
 
@@ -168,18 +178,41 @@ export default function ServiceDetailTemplate({
             </div>
           </div>
 
-          <div className="mb-10">
-            <img
-              src={imgWide}
-              alt="Wide artwork"
-              className="w-full h-full rounded-xl object-cover"
-            />
+          <div className="mb-10 hidden lg:grid lg:grid-cols-4 lg:gap-4">
+            {desktopPortfolioSymbols.map((item) => (
+              <div
+                key={item.alt}
+                className="rounded-xl bg-[#111] p-4 flex items-center justify-center"
+              >
+                <img
+                  loading="lazy"
+                  decoding="async"
+                  src={item.src}
+                  alt={item.alt}
+                  className="max-h-[280px] w-full object-contain"
+                />
+              </div>
+            ))}
           </div>
 
-          <div>
+          <div className="grid grid-cols-1 gap-4">
+            <div className="rounded-xl bg-[#111] p-4 lg:hidden">
+              <img
+                loading="lazy"
+                decoding="async"
+                src={symbol4}
+                alt="Portfolio symbol artwork"
+                className="w-full object-contain"
+              />
+            </div>
+          </div>
+
+          <div className="mb-10">
             <img
-              src={imgBottom}
-              alt="Osiris logo artwork"
+              loading="lazy"
+              decoding="async"
+              src={imgWide}
+              alt="Jester background artwork"
               className="w-full rounded-xl object-cover"
             />
           </div>
@@ -193,7 +226,7 @@ export default function ServiceDetailTemplate({
 
         <div className="relative max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:items-start gap-16">
           <div className="flex">
-            <img
+            <img loading="lazy" decoding="async"
               src={techstack}
               alt="Tech Stack"
               className="
@@ -242,7 +275,7 @@ export default function ServiceDetailTemplate({
               "
               >
                 <div className="relative h-[280px] w-full overflow-hidden bg-[#0f0f0f]">
-                  <img
+                  <img loading="lazy" decoding="async"
                     src={item.image}
                     alt={item.title}
                     className="h-full w-full object-contain p-4 opacity-80"
@@ -259,7 +292,7 @@ export default function ServiceDetailTemplate({
                   ></div>
 
                   <div className="absolute top-4 right-4 bg-black/70 border border-orange-500 rounded-md p-3">
-                    <img src={item.icon} className="w-5 h-5" />
+                    <img loading="lazy" decoding="async" src={item.icon} className="w-5 h-5" />
                   </div>
                 </div>
 
@@ -275,3 +308,4 @@ export default function ServiceDetailTemplate({
     </PageLayout>
   );
 }
+
