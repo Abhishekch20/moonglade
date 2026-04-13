@@ -144,7 +144,7 @@ Our global experience of developing art for markets like Europe, US, Asia, and A
                 className="group rounded-none px-6 font-display text-xl tracking-wider uppercase"
               >
                 View Portfolio
-                
+
               </Button>
             </motion.div>
           </motion.div>
