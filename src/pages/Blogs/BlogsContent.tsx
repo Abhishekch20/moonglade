@@ -110,9 +110,9 @@ export default function Blog() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.55 }}
-          className="absolute bottom-[120px] left-1/2 -translate-x-1/2 text-center max-w-[900px] px-6"
+          className="absolute bottom-[120px] left-0 flex w-full justify-center px-6 text-center"
         >
-          <h1 className="text-white text-[28px] md:text-[36px] font-bold leading-tight uppercase tracking-wider">
+          <h1 className="max-w-[900px] text-white text-[28px] md:text-[36px] font-bold leading-tight uppercase tracking-wider">
             INDUSTRY INSIGHTS, USEFUL READS, AND UPDATES FROM
             <br />
             OUR LATEST WORK SHARED REGULARLY.
