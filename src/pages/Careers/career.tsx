@@ -30,6 +30,24 @@ const slideLeft = {
   },
 };
 
+const slideRight = {
+  hidden: { opacity: 0, x: 60 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.6 },
+  },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55 },
+  },
+};
+
 
 export default function CareersPage() {
   return (
@@ -109,7 +127,13 @@ export default function CareersPage() {
         </div>
       </div>
 
-      <section className="relative min-h-[90vh] my-32 bg-black overflow-hidden">
+      <motion.section
+        initial={{ opacity: 0, y: 48 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.12 }}
+        transition={{ duration: 0.55 }}
+        className="relative min-h-[90vh] my-32 bg-black overflow-hidden"
+      >
 
         {/* BACKGROUND IMAGE */}
         <div
@@ -162,12 +186,18 @@ export default function CareersPage() {
           </div>
         </div>
 
-      </section>
+      </motion.section>
 
 
       {/* hiring process*/}
 
-      <section className="relative bg-black pt-14 pb-8 overflow-hidden lg:mx-20 pointer-events-none">
+      <motion.section
+        initial={{ opacity: 0, y: 48 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.08 }}
+        transition={{ duration: 0.55 }}
+        className="relative bg-black pt-14 pb-8 overflow-hidden lg:mx-20 pointer-events-none"
+      >
 
         {/* BACKGROUND IMAGE */}
         <div
@@ -180,9 +210,15 @@ export default function CareersPage() {
         <div className="relative z-10 max-w-7xl mx-auto px-6">
 
           {/* HEADING */}
-          <h2 className="text-center font-display tracking-widest text-4xl sm:text-4xl lg:text-6xl text-gray-100 mb-28">
+          <motion.h2
+            initial={{ opacity: 0, y: 34 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5 }}
+            className="text-center font-display tracking-widest text-4xl sm:text-4xl lg:text-6xl text-gray-100 mb-28"
+          >
             OUR HIRING PROCESS
-          </h2>
+          </motion.h2>
 
           {/* TIMELINE WRAPPER */}
           <div className="relative">
@@ -355,7 +391,7 @@ export default function CareersPage() {
 
           </div>
         </div>
-      </section>
+      </motion.section>
 
     </section>
 

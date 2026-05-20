@@ -1,5 +1,6 @@
-import { lazy, Suspense, useEffect, useRef, useState, type ReactNode } from "react";
+import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import DeferredRender from "@/components/DeferredRender";
 import PageLayout from "../../components/PageLayout";
 import dragon1 from "@/assets/five.webp";
 import dragon1Mobile from "@/assets/dragon1Mobile.webp";
@@ -20,50 +21,37 @@ import mainImg2 from "@/assets/o-main.webp"
 const portfolioVideoUrl =
   "https://res.cloudinary.com/dtee5yyvw/video/upload/q_auto,f_auto/v1773842596/portfoliovideo_keztw6.mp4";
 
-const Indexs = lazy(() => import("@/components/images_anime"));
+const container = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12 } },
+};
 
-function DeferredSection({
-  children,
-  minHeight,
-}: {
-  children: ReactNode;
-  minHeight: string;
-}) {
-  const hostRef = useRef<HTMLDivElement | null>(null);
-  const [isVisible, setIsVisible] = useState(false);
+const fadeUp = {
+  hidden: { opacity: 0, y: 36 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5 },
+  },
+};
 
-  useEffect(() => {
-    const node = hostRef.current;
+const slideLeft = {
+  hidden: { opacity: 0, x: -42 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.5 },
+  },
+};
 
-    if (!node || isVisible) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0]?.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: "300px 0px" },
-    );
-
-    observer.observe(node);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [isVisible]);
-
-  return (
-    <div ref={hostRef} style={{ minHeight }}>
-      {isVisible ? (
-        <Suspense fallback={<div style={{ minHeight }} className="bg-black" />}>
-          {children}
-        </Suspense>
-      ) : null}
-    </div>
-  );
-}
+const slideRight = {
+  hidden: { opacity: 0, x: 42 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.5 },
+  },
+};
 
 export default function Portfolio() {
   const navigate = useNavigate();
@@ -106,24 +94,37 @@ export default function Portfolio() {
       {/* ================= TOP PRODUCTS ================= */}
       <section className="wave-gradient py-24 text-white">
 
-        <div className="h-[450px] w-full flex flex-col items-center justify-center text-center">
-          <h2 className="text-center text-5xl lg:text-7xl tracking-widest mb-12 lg:mb-0">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="h-[450px] w-full flex flex-col items-center justify-center text-center"
+        >
+          <motion.h2 variants={fadeUp} className="text-center text-5xl lg:text-7xl tracking-widest mb-12 lg:mb-0">
             WE BUILD{" "}
             <span className="block md:inline bg-gradient-to-r from-purple-500 via-indigo-400 to-cyan-300 bg-clip-text text-transparent">
               Exciting Games
             </span>
-          </h2>
+          </motion.h2>
 
-          <p className="text-center text-2xl m-16 lg:mx-72 lg:my-6 text-slate-400">
+          <motion.p variants={fadeUp} className="text-center text-2xl m-16 lg:mx-72 lg:my-6 text-slate-400">
             We create projects that are remembered; combining fascinating mechanics,
             high-quality graphics, and implementing cutting-edge technology.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.12 }}
+          className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10"
+        >
 
           {/* ================= CARD 1 ================= */}
-          <div
+          <motion.div
+            variants={slideLeft}
             onClick={() => go("/portfolio/heavenly-dragons")}
             className="relative group rounded-xl overflow-hidden cursor-pointer"
           >
@@ -135,7 +136,7 @@ export default function Portfolio() {
               <div className="transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-3">
                 <h3 className="text-xl font-semibold mb-2">Heavenly Dragons</h3>
                 <p className="text-sm text-gray-300 mb-4">
-                  Dummy text ever since the 1500s, when an unknown printer took a galley of type.
+                  A premium Asian-fantasy slot with golden dragons, koi symbols, guardian icons, and ceremonial red-and-gold reel art.
                 </p>
               </div>
 
@@ -150,10 +151,11 @@ export default function Portfolio() {
                 Read More
               </Button>
             </div>
-          </div>
+          </motion.div>
 
           {/* ================= CARD 2 ================= */}
-          <div
+          <motion.div
+            variants={fadeUp}
             onClick={() => go("/portfolio/jurassic-jungle")}
             className="relative group rounded-xl overflow-hidden cursor-pointer"
           >
@@ -180,10 +182,11 @@ export default function Portfolio() {
                 Read More
               </Button>
             </div>
-          </div>
+          </motion.div>
 
           {/* ================= CARD 3 ================= */}
-          <div
+          <motion.div
+            variants={slideRight}
             onClick={() => go("/portfolio/dragons-treasure")}
             className="relative group rounded-xl overflow-hidden cursor-pointer"
           >
@@ -210,10 +213,11 @@ export default function Portfolio() {
                 Read More
               </Button>
             </div>
-          </div>
+          </motion.div>
 
           {/* ================= CARD 4 ================= */}
-          <div
+          <motion.div
+            variants={slideLeft}
             onClick={() => go("/portfolio/mythic-fortune")}
             className="relative group rounded-xl overflow-hidden cursor-pointer"
           >
@@ -225,7 +229,7 @@ export default function Portfolio() {
               <div className="transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-3">
                 <h3 className="text-xl font-semibold mb-2">Mythic Fortune</h3>
                 <p className="text-sm text-gray-300 mb-4">
-                  Dummy text ever since the 1500s, when an unknown printer took a galley of type.
+                  A refined fantasy slot framed with marble architecture, enchanted forest depth, jeweled symbols, and clear reward states.
                 </p>
               </div>
 
@@ -240,10 +244,11 @@ export default function Portfolio() {
                 Read More
               </Button>
             </div>
-          </div>
+          </motion.div>
           
           {/* ================= CARD 5 ================= */}
-          <div
+          <motion.div
+            variants={fadeUp}
             onClick={() => go("/portfolio/chinese-game")}
             className="relative group rounded-xl overflow-hidden cursor-pointer"
           >
@@ -270,12 +275,13 @@ export default function Portfolio() {
                 Read More
               </Button>
             </div>
-          </div>
+          </motion.div>
 
 
 
           {/* ================= CARD 6 ================= */}
-          <div
+          <motion.div
+            variants={slideRight}
             onClick={() => go("/portfolio/pirate-goldrush")}
             className="relative group rounded-xl overflow-hidden cursor-pointer"
           >
@@ -302,38 +308,52 @@ export default function Portfolio() {
                 Read More
               </Button>
             </div>
-          </div>
+          </motion.div>
 
           
 
-        </div>
+        </motion.div>
 
-        <section className="mx-auto mt-20 max-w-7xl px-6">
-          <div className="overflow-hidden rounded-2xl border border-white/10 bg-black/60 shadow-2xl">
-            <video
-              className="h-full w-full"
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="metadata"
-            >
-              <source src={portfolioVideoUrl} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        </section>
+        <DeferredRender minHeight="420px">
+          <motion.section
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.55 }}
+            className="mx-auto mt-20 max-w-7xl px-6"
+          >
+            <div className="overflow-hidden rounded-2xl border border-white/10 bg-black/60 shadow-2xl">
+              <video
+                className="h-full w-full"
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+              >
+                <source src={portfolioVideoUrl} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </motion.section>
+        </DeferredRender>
 
         {/* ================= GALLERY SECTION ================= */}
         
       </section>
 
-      <section className="wave-gradient relative py-20 px-6 ">
+      <section className="content-auto wave-gradient relative py-20 px-6 " style={{ containIntrinsicSize: "1600px" }}>
         
         <div className="max-w-7xl mx-auto space-y-20">
 
           {/* ITEM 1 */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -42 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.18 }}
+            transition={{ duration: 0.5 }}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center"
+          >
             {/* IMAGE */}
             <div className="flex justify-center">
               <div className="w-full rounded-xl overflow-hidden shadow-lg">
@@ -350,20 +370,26 @@ export default function Portfolio() {
             {/* CONTENT */}
             <div>
               <p className="text-gray-200 leading-relaxed lg:text-xl mb-6">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy text
-                ever since the 1500s, when an unknown printer took a galley of
-                type and scrambled it to make a type specimen book. It has
+                We design slot game screens with clear reels, premium symbol
+                hierarchy, readable controls, and polished reward states. Each
+                layout balances fantasy atmosphere with the fast recognition a
+                real-money style slot interface needs.
               </p>
 
               <Button variant="slanted" size="default" className="px-6 font-heading">
-              <a href="/contact" className="tracking-widest text-base">Read More</a>
+              <a href="/portfolio/mythic-fortune" className="tracking-widest text-base">Read More</a>
             </Button>
             </div>
-          </div>
+          </motion.div>
 
           {/* ITEM 2 */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: 42 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.18 }}
+            transition={{ duration: 0.5 }}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center"
+          >
             <div className="flex justify-center">
               <div className="w-full  rounded-xl overflow-hidden shadow-lg">
                 <img
@@ -378,20 +404,26 @@ export default function Portfolio() {
 
             <div>
               <p className="text-gray-200 leading-relaxed lg:text-xl mb-6">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy text
-                ever since the 1500s, when an unknown printer took a galley of
-                type and scrambled it to make a type specimen book. It has
+                Our slot concepts include complete gameplay UI, themed symbols,
+                free-spin cues, multipliers, bet controls, and win panels. From
+                pirate adventures to fantasy worlds, every element is crafted to
+                feel vibrant, usable, and production-ready.
               </p>
 
               <Button variant="slanted" size="default" className="px-6 font-heading">
-              <a href="/contact" className="tracking-widest text-base">Read More</a>
+              <a href="/portfolio/pirate-goldrush" className="tracking-widest text-base">Read More</a>
             </Button>
             </div>
-          </div>
+          </motion.div>
 
           {/* ITEM 3 */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 42 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.18 }}
+            transition={{ duration: 0.5 }}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center"
+          >
             <div className="flex justify-center">
               <div className="w-full rounded-xl overflow-hidden shadow-lg">
                 <img
@@ -405,27 +437,35 @@ export default function Portfolio() {
             </div>
 
             <div>
-              <p className="text-gray-2 00 lg:text-xl leading-relaxed mb-6">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy text
-                ever since the 1500s, when an unknown printer took a galley of
-                type and scrambled it to make a type specimen book. It has
+              <p className="text-gray-200 lg:text-xl leading-relaxed mb-6">
+                We build slot art systems that connect title screens, reels,
+                character assets, bonus symbols, and interface states into one
+                consistent visual language. The result is a polished game
+                presentation that supports both theme and player clarity.
               </p>
 
               <Button variant="slanted" size="default" className="px-6 font-heading">
-              <a href="/contact" className="tracking-widest text-base">Read More</a>
+              <a href="/portfolio/chinese-game" className="tracking-widest text-base">Read More</a>
             </Button>
             </div>
-          </div>
+          </motion.div>
 
         </div>
         {/* Images */}
-      <div className="images bg-black mt-20 lg:mt-28">
+      <DeferredRender minHeight="900px" rootMargin="350px 0px">
+        <motion.div
+          initial={{ opacity: 0, y: 42 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.12 }}
+          transition={{ duration: 0.55 }}
+          className="images bg-black mt-20 lg:mt-28"
+        >
           <img
             src={mainImg1}
             alt=""
             loading="lazy"
             decoding="async"
+            fetchPriority="low"
             className=" h-[30vh] lg:h-full md:h-[100vh] bg-cover w-full brightness-110"
           />
           <img
@@ -433,9 +473,11 @@ export default function Portfolio() {
             alt=""
             loading="lazy"
             decoding="async"
+            fetchPriority="low"
             className=" h-[40vh] lg:h-full md:h-[100vh] bg-cover w-full brightness-110"
           />
-          </div>
+        </motion.div>
+      </DeferredRender>
       </section>
 
 

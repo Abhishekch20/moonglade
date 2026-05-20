@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 import blueryu from "@/assets/blueryu.webp";
@@ -33,102 +32,29 @@ const slideUp = {
   },
 };
 
-/* -------------------------------
-   DATA
--------------------------------- */
+const slideLeft = {
+  hidden: { opacity: 0, x: -60 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.6 },
+  },
+};
 
-const testimonials = [
-  {
-    text: "Moonglade delivered outstanding visuals that elevated our game quality beyond expectations.",
-    name: "Andrew Chris",
-    country: "Client from Uganda",
-    rating: 5,
+const slideRight = {
+  hidden: { opacity: 0, x: 60 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.6 },
   },
-  {
-    text: "Professional, creative, and always on time. Their cinematic work is top tier.",
-    name: "Chris Evans",
-    country: "Client from USA",
-    rating: 4,
-  },
-  {
-    text: "The animation quality and attention to detail was incredible. Highly recommended.",
-    name: "Sarah Williams",
-    country: "Client from UK",
-    rating: 5,
-  },
-  {
-    text: "They understood our vision perfectly and brought it to life with stunning art.",
-    name: "Mark Jensen",
-    country: "Client from Denmark",
-    rating: 4,
-  },
-  {
-    text: "Reliable studio with strong communication and world-class visuals.",
-    name: "Amit Verma",
-    country: "Client from India",
-    rating: 5,
-  },
-];
-
-/* -------------------------------
-   CONSTANTS
--------------------------------- */
-
-const CARD_WIDTH = 360;
-const GAP = 40;
-const TOTAL = CARD_WIDTH + GAP;
+};
 
 /* -------------------------------
    COMPONENT
 -------------------------------- */
 
 export function AboutUS() {
-  const [active, setActive] = useState(0);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
-
-  const startAuto = () => {
-    stopAuto();
-    intervalRef.current = setInterval(() => {
-      setActive((prev) => (prev + 1) % testimonials.length);
-    }, 4000);
-  };
-
-  const stopAuto = () => {
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-      intervalRef.current = null;
-    }
-  };
-
-  useEffect(() => {
-    startAuto();
-    return stopAuto;
-  }, []);
-
-  const prevSlide = () => {
-    stopAuto();
-    setActive((prev) =>
-      prev === 0 ? testimonials.length - 1 : prev - 1,
-    );
-    startAuto();
-  };
-
-  const nextSlide = () => {
-    stopAuto();
-    setActive((prev) => (prev + 1) % testimonials.length);
-    startAuto();
-  };
-
-  const getOffset = (index: number) => {
-    const half = Math.floor(testimonials.length / 2);
-    let diff = index - active;
-
-    if (diff > half) diff -= testimonials.length;
-    if (diff < -half) diff += testimonials.length;
-
-    return diff * TOTAL;
-  };
-
   return (
     <section className="relative min-h-screen pt-20 pb-40 overflow-hidden">
 
@@ -211,7 +137,13 @@ export function AboutUS() {
       </div>
 
       {/* ================= OUR EXPERTISE ================= */}
-      <section className="relative z-10 mt-32 px-6">
+      <motion.section
+        variants={container}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.12 }}
+        className="relative z-10 mt-32 px-6"
+      >
         <div className="max-w-5xl mx-auto flex flex-col gap-24">
 
           {[
@@ -246,7 +178,11 @@ export function AboutUS() {
             const isLeft = card.position === "left";
 
             return (
-              <div key={index} className="relative min-h-[380px]">
+              <motion.div
+                key={index}
+                variants={isLeft ? slideLeft : slideRight}
+                className="relative min-h-[380px]"
+              >
 
                 <svg
                   className="absolute inset-0 w-full h-full pointer-events-none"
@@ -291,7 +227,13 @@ export function AboutUS() {
                     className={`flex flex-col ${isLeft ? "md:flex-row" : "md:flex-row-reverse"
                       } items-center gap-12`}
                   >
-                    <div className="flex h-[220px] w-[220px] items-center justify-center md:h-[280px] md:w-[280px]">
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.92 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true, amount: 0.35 }}
+                      transition={{ duration: 0.55, delay: 0.12 }}
+                      className="flex h-[220px] w-[220px] items-center justify-center md:h-[280px] md:w-[280px]"
+                    >
                       <img
                         src={card.image}
                         alt={card.title}
@@ -299,48 +241,66 @@ export function AboutUS() {
                         decoding="async"
                         className="h-full w-full object-contain"
                       />
-                    </div>
+                    </motion.div>
 
-                    <div className="flex-1 space-y-4">
-                      <h2 className="text-5xl font-bold text-[#f64242] uppercase">
+                    <motion.div
+                      variants={container}
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true, amount: 0.35 }}
+                      className="flex-1 space-y-4"
+                    >
+                      <motion.h2 variants={slideUp} className="text-5xl font-bold text-[#f64242] uppercase">
                         {card.title}
-                      </h2>
+                      </motion.h2>
 
-                      <p className="text-gray-300 text-lg">
+                      <motion.p variants={slideUp} className="text-gray-300 text-lg">
                         {card.text1}
-                      </p>
+                      </motion.p>
 
-                      <p className="text-gray-400 text-lg">
+                      <motion.p variants={slideUp} className="text-gray-400 text-lg">
                         {card.text2}
-                      </p>
-                    </div>
+                      </motion.p>
+                    </motion.div>
                   </div>
                 </div>
 
-              </div>
+              </motion.div>
             );
           })}
         </div>
-      </section>
+      </motion.section>
 
       {/* ================= WHY CHOOSE US ================= */}
-      <section className="relative z-10 w-full bg-[#0c0c0c] mt-20 text-white py-20 px-4 md:px-10">
+      <motion.section
+        initial={{ opacity: 0, y: 70 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.12 }}
+        transition={{ duration: 0.65 }}
+        className="relative z-10 w-full bg-[#0c0c0c] mt-20 text-white py-20 px-4 md:px-10"
+      >
         <div className="max-w-7xl mx-auto">
 
           {/* Heading + Text */}
-          <div className="flex flex-col md:flex-row justify-between gap-6">
-            <h2 className="text-4xl lg:text-7xl md:text-5xl font-bold tracking-wider mt-6">
+          <motion.div
+            variants={container}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            className="flex flex-col md:flex-row justify-between gap-6"
+          >
+            <motion.h2 variants={slideLeft} className="text-4xl lg:text-7xl md:text-5xl font-bold tracking-wider mt-6">
               WHY CHOOSE US
-            </h2>
+            </motion.h2>
 
-            <p className="text-gray-300 max-w-lg text-lg md:text-base lg:text-xl mb-4 leading-relaxed">
+            <motion.p variants={slideRight} className="text-gray-300 max-w-lg text-lg md:text-base lg:text-xl mb-4 leading-relaxed">
               As a professional game art outsourcing studio, Moonglade Atelier
               specializes in 2D game art, slot game design, animation, and
               cinematic production. Our scalable workflows, fast turnaround
               times, and industry-standard processes ensure high-quality asset
               delivery for game developers worldwide.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
           {/* Line Decoration â€” Visible Only on Desktop */}
           <div className="hidden lg:block">
@@ -358,11 +318,17 @@ export function AboutUS() {
           </div>
 
           {/* 4 Items + Center Image */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-center lg:ml-10">
+          <motion.div
+            variants={container}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.18 }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-10 items-center lg:ml-10"
+          >
 
             {/* Left items */}
             <div className="space-y-20">
-              <div className="flex items-start gap-4">
+              <motion.div variants={slideLeft} className="flex items-start gap-4">
                 <img src={Symbol2} alt="" loading="lazy" decoding="async" className="w-20 h-20" />
                 <div>
                   <h4 className="font-semibold text-2xl tracking-widest">Quality</h4>
@@ -370,9 +336,9 @@ export function AboutUS() {
                     We deliver high-quality 2D/3D game art and animation tailored for global game studios.
                   </p>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="flex items-start gap-4">
+              <motion.div variants={slideLeft} className="flex items-start gap-4">
                 <img src={Symbol3} alt="" loading="lazy" decoding="async" className="w-20 h-20" />
                 <div>
                   <h4 className="font-semibold text-2xl tracking-widest">Scalability</h4>
@@ -380,11 +346,11 @@ export function AboutUS() {
                     Our structured production pipelines ensure consistent, scalable, and production-ready assets.
                   </p>
                 </div>
-              </div>
+              </motion.div>
             </div>
 
             {/* Center Image */}
-            <div className="flex justify-center">
+            <motion.div variants={slideUp} className="flex justify-center">
               <motion.img
                 src={Symbol1}
                 alt="center"
@@ -405,11 +371,11 @@ export function AboutUS() {
                 }}
                 className="w-72 md:w-72 lg:w-[400px] rounded-2xl shadow-xl mt-8"
               />
-            </div>
+            </motion.div>
 
             {/* Right items */}
             <div className="space-y-20">
-              <div className="flex items-start gap-4">
+              <motion.div variants={slideRight} className="flex items-start gap-4">
                 <img src={Symbol4} alt="" loading="lazy" decoding="async" className="w-20 h-20" />
                 <div>
                   <h4 className="font-semibold text-2xl tracking-widest">Expertise</h4>
@@ -417,9 +383,9 @@ export function AboutUS() {
                     We specialize in slot game art, cinematic visuals, and immersive storytelling design.
                   </p>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="flex items-start gap-4">
+              <motion.div variants={slideRight} className="flex items-start gap-4">
                 <img src={Symbol5} alt="" loading="lazy" decoding="async" className="w-20 h-20" />
                 <div>
                   <h4 className="font-semibold text-2xl tracking-widest">Precision</h4>
@@ -427,110 +393,14 @@ export function AboutUS() {
                     We combine creative excellence with technical accuracy to elevate every gaming experience.
                   </p>
                 </div>
-              </div>
+              </motion.div>
             </div>
 
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
 
-      {/* ================= TESTIMONIALS ================= */}
-      <section className="relative z-10 mt-40 px-6">
-        <div className="max-w-[1400px] mx-auto">
-
-          <h2 className="text-center text-4xl md:text-5xl font-bold uppercase tracking-widest mb-24
-  bg-gradient-to-r from-[#ffb86b] via-[#ff8c42] to-[#c84c2f]
-  bg-clip-text text-transparent
-  drop-shadow-[0_0_12px_rgba(255,120,60,0.35)]">
-            What Our Clients Say
-          </h2>
-
-          <div className="relative h-[300px] overflow-hidden">
-            <div className="relative flex justify-center items-center h-full">
-
-              {testimonials.map((item, index) => {
-                const isActive = index === active;
-
-                return (
-                  <div
-                    key={index}
-                    className={`absolute w-[360px] h-[260px] rounded-2xl p-10 text-center
-                      transition-all duration-700 ease-out
-                      ${isActive
-                        ? "bg-gradient-to-br from-[#2a0648] to-[#140020] z-20"
-                        : "bg-[#111] opacity-40 z-10"
-                      }`}
-                    style={{
-                      transform: `translateX(${getOffset(index)}px) scale(${isActive ? 1.25 : 0.95})`,
-                    }}
-                  >
-                    <div className="flex justify-center mb-6">
-                      {Array.from({ length: 5 }).map((_, i) => (
-                        <span key={i} className={i < item.rating ? "text-white" : "text-gray-600"}>
-                          ★
-                        </span>
-                      ))}
-                    </div>
-
-                    <p className="text-gray-300 text-sm mb-6">{item.text}</p>
-                    <p className="font-semibold text-white">{item.name}</p>
-                    <p className="text-xs text-gray-400">{item.country}</p>
-                  </div>
-                );
-              })}
-
-            </div>
-          </div>
-
-          {/* CONTROLS */}
-          <div className="flex justify-center mt-20">
-            <div className="flex items-center bg-[#0f0f10] rounded-full px-4 py-3 gap-3">
-
-              <button
-                onClick={prevSlide}
-                className="w-12 h-12 flex items-center justify-center rounded-full
-                text-white hover:bg-white/10 transition"
-              >
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path d="M15 18l-6-6 6-6" />
-                </svg>
-              </button>
-
-              <button
-                onClick={nextSlide}
-                className="w-14 h-14 flex items-center justify-center rounded-full
-             bg-gradient-to-r from-[#b84b5a] to-[#e07a2f]
-             text-white shadow-md transition
-             hover:scale-105
-             hover:shadow-[0_0_20px_rgba(232,144,13,0.6)]
-             active:scale-95"
-              >
-
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path d="M9 6l6 6-6 6" />
-                </svg>
-              </button>
-
-            </div>
-          </div>
-
-        </div>
-      </section>
 
     </section>
   );

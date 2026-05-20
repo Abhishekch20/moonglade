@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 
 import blogImg from "@/assets/blogsmainimg1.svg";
 import farmgirl from "@/assets/Farmgirl.webp";
@@ -69,6 +70,26 @@ const blogPosts = [
   },
 ];
 
+const container = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12 } },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 36 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
+const slideLeft = {
+  hidden: { opacity: 0, x: -42 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+};
+
+const slideRight = {
+  hidden: { opacity: 0, x: 42 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+};
+
 export default function Blog() {
   return (
     <div className="text-white w-full overflow-hidden bg-black">
@@ -84,13 +105,19 @@ export default function Blog() {
 
         <div className="absolute inset-0" />
 
-        <div className="absolute bottom-[120px] left-1/2 -translate-x-1/2 text-center max-w-[900px] px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 42 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.55 }}
+          className="absolute bottom-[120px] left-1/2 -translate-x-1/2 text-center max-w-[900px] px-6"
+        >
           <h1 className="text-white text-[28px] md:text-[36px] font-bold leading-tight uppercase tracking-wider">
             INDUSTRY INSIGHTS, USEFUL READS, AND UPDATES FROM
             <br />
             OUR LATEST WORK SHARED REGULARLY.
           </h1>
-        </div>
+        </motion.div>
       </section>
 
       <main className="bg-black text-white overflow-hidden">
@@ -106,18 +133,24 @@ export default function Blog() {
     "
           />
 
-          <div className="relative z-10 max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-[80px] min-h-[95vh]">
+          <motion.div
+            variants={container}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.18 }}
+            className="relative z-10 max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-[80px] min-h-[95vh]"
+          >
             <div className="text-left max-w-[700px] lg:ml-20 lg:w-[550px]">
-              <h1 className="text-3xl lg:text-5xl mb-8">GAME ART</h1>
+              <motion.h1 variants={slideLeft} className="text-3xl lg:text-5xl mb-8">GAME ART</motion.h1>
 
-              <p className="uppercase tracking-widest text-sm md:text-base lg:text-xl text-gray-300 opacity-60">
+              <motion.p variants={slideLeft} className="uppercase tracking-widest text-sm md:text-base lg:text-xl text-gray-300 opacity-60">
                 Strong visuals play a major role in a game&apos;s success. This article breaks down
                 how to evaluate a game art studio, what to look for in their process, and why
                 visual quality directly affects player experience.
-              </p>
+              </motion.p>
             </div>
 
-            <div className="hidden lg:flex justify-end items-center">
+            <motion.div variants={slideRight} className="hidden lg:flex justify-end items-center">
               <img
                 src={farmgirl}
                 alt="Character"
@@ -125,8 +158,8 @@ export default function Blog() {
                 decoding="async"
                 className="h-[550px] object-contain"
               />
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </section>
 
         <section className="relative bg-[#2c0345c7] overflow-hidden">
@@ -134,12 +167,16 @@ export default function Blog() {
             const isReversed = index === 1;
 
             return (
-              <div
+              <motion.div
                 key={post.title}
+                variants={container}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.16 }}
                 className={`max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-14 items-center ${index === 0 ? "mb-20 lg:mt-28 lg:mb-24" : index === 1 ? "mb-20 lg:pt-24 lg:mb-24" : "lg:pt-24 lg:pb-10"
                   }`}
               >
-                <div className={isReversed ? "order-1 lg:order-2" : ""}>
+                <motion.div variants={isReversed ? slideRight : slideLeft} className={isReversed ? "order-1 lg:order-2" : ""}>
                   <p className="text-sm uppercase tracking-[0.2em] text-gray-400 mb-3">
                     {post.category} • {post.date}
                   </p>
@@ -157,9 +194,9 @@ export default function Blog() {
                       Read More
                     </Button>
                   </a>
-                </div>
+                </motion.div>
 
-                <div className={`flex justify-center ${isReversed ? "order-2 lg:order-1" : ""}`}>
+                <motion.div variants={isReversed ? slideLeft : slideRight} className={`flex justify-center ${isReversed ? "order-2 lg:order-1" : ""}`}>
                   <img
                     src={post.image}
                     alt={post.title}
@@ -167,8 +204,8 @@ export default function Blog() {
                     decoding="async"
                     className={`rounded-full ${index === 0 ? "w-[350px] md:w-[320px] lg:w-[450px]" : "w-[260px] md:w-[320px] lg:w-[450px]"}`}
                   />
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             );
           })}
         </section>

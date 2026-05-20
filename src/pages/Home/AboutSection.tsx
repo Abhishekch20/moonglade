@@ -95,7 +95,7 @@ Our global experience of developing art for markets like Europe, US, Asia, and A
           >
             <img loading="lazy" decoding="async"
               src={img3}
-              className=" h-[400px] mb-6 lg:mb-0 lg:h-[580px] w-4/5"
+              className=" h-[400px] mb-6 lg:mb-0 lg:h-[650px] w-4/5"
               alt="About section"
             />
           </motion.div>

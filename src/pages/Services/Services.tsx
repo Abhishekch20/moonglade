@@ -1,9 +1,9 @@
 import PageLayout from "../../components/PageLayout";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import DeferredRender from "@/components/DeferredRender";
 import { Link } from "react-router-dom";
 import bgImage from "@/assets/ChinesegameBG.webp";
-import japaneseWoman from "@/assets/japanese_woman.webp";
 import animation2D from "@/assets/jester.webp";
 import animation3D from "@/assets/Group11.webp";
 import kidsAnimation from "@/assets/Monkey.webp";
@@ -32,6 +32,15 @@ const container = {
 
 const slideLeft = {
   hidden: { opacity: 0, x: -36 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.45 },
+  },
+};
+
+const slideRight = {
+  hidden: { opacity: 0, x: 36 },
   visible: {
     opacity: 1,
     x: 0,
@@ -198,10 +207,10 @@ function ServiceSection({
 
   return (
     <section
-      className="content-auto relative z-10 mt-24 px-6 sm:mt-28 lg:mt-32"
-      style={{ containIntrinsicSize: "900px" }}
+      className="content-auto relative z-10 mt-12 px-6 sm:mt-14 lg:mt-16"
+      style={{ containIntrinsicSize: "560px" }}
     >
-      <div className="mx-auto grid max-w-[1400px] items-center gap-10 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)] lg:gap-16">
+      <div className="mx-auto grid max-w-[1400px] items-center gap-8 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)] lg:gap-12">
         {imageFirst ? imageBlock : textBlock}
         {imageFirst ? textBlock : imageBlock}
       </div>
@@ -220,24 +229,24 @@ export default function Services() {
         <div className="absolute inset-0 bg-black/60" />
 
         <div className="container mx-auto relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[85vh]">
+          <div className="flex min-h-[85vh] items-center justify-center px-6">
             <motion.div
               variants={container}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
-              className="space-y-8 text-center lg:text-left"
+              className="mx-auto max-w-5xl space-y-8 text-center"
             >
               <motion.h1
                 variants={slideLeft}
-                className="text-4xl lg:text-6xl font-bold bg-gradient-to-r from-[#5816bb] via-[#E46F1E] to-[#e8900d] text-transparent bg-clip-text"
+                className="mx-auto max-w-4xl text-4xl font-bold bg-gradient-to-r from-[#5816bb] via-[#E46F1E] to-[#e8900d] bg-clip-text text-transparent sm:text-5xl lg:text-7xl"
               >
                 Built From Passion. Driven by Craft.
               </motion.h1>
 
               <motion.p
                 variants={slideLeft}
-                className="text-gray-300 text-lg max-w-xl mx-auto lg:mx-0"
+                className="mx-auto max-w-3xl text-lg leading-relaxed text-gray-300 sm:text-xl"
               >
                 Moonglade Atelier is a game art outsourcing studio delivering
                 high-quality 2D/3D game art, animation, and cinematic visuals.
@@ -245,23 +254,12 @@ export default function Services() {
 
               <motion.p
                 variants={slideLeft}
-                className="text-gray-300 text-lg max-w-xl mx-auto lg:mx-0"
+                className="mx-auto max-w-3xl text-lg leading-relaxed text-gray-300 sm:text-xl"
               >
                 We help game studios worldwide create engaging, production-ready
                 assets that enhance player experiences.
               </motion.p>
             </motion.div>
-
-            <div className="relative flex h-[350px] w-full items-center justify-center md:h-[450px] lg:h-[500px]">
-              <img
-                src={japaneseWoman}
-                alt="Japanese woman artwork"
-                loading="eager"
-                fetchPriority="high"
-                decoding="async"
-                className="h-full w-full object-contain"
-              />
-            </div>
           </div>
         </div>
 
@@ -270,19 +268,32 @@ export default function Services() {
           style={{ containIntrinsicSize: "1200px" }}
         >
           <div className="max-w-[1400px] mx-auto">
-            <div className="text-center mb-20">
-              <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-widest">
+            <motion.div
+              variants={container}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              className="text-center mb-20"
+            >
+              <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-bold uppercase tracking-widest">
                 Our Expertise
-              </h2>
-              <p className="text-gray-400 mt-3 text-lg">
+              </motion.h2>
+              <motion.p variants={fadeUp} className="text-gray-400 mt-3 text-lg">
                 Our Services for Global Clients
-              </p>
-            </div>
+              </motion.p>
+            </motion.div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {expertiseCards.map((item) => (
-                <div
+            <motion.div
+              variants={container}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.12 }}
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
+              {expertiseCards.map((item, index) => (
+                <motion.div
                   key={`${item.title}-${item.img}`}
+                  variants={index % 3 === 0 ? slideLeft : index % 3 === 1 ? fadeUp : slideRight}
                   className="relative group overflow-hidden cursor-pointer"
                 >
                   <img
@@ -290,19 +301,19 @@ export default function Services() {
                     alt={item.title}
                     loading="lazy"
                     decoding="async"
-                    className="h-[240px] w-full object-contain bg-[#111111ae] p-4 transition-transform duration-500 group-hover:scale-105"
+                    className="h-[240px] w-full rounded-[10px] object-contain bg-[#111111ae] p-4 transition-transform duration-500 group-hover:scale-105"
                   />
 
-                  <div className="absolute inset-0 bg-black/40 group-hover:opacity-0 transition" />
+                  <div className="absolute inset-0 rounded-[10px] bg-black/40 group-hover:opacity-0 transition" />
 
                   <div className="absolute inset-0 flex items-center justify-center group-hover:opacity-0 transition">
                     <h3 className="text-white text-2xl md:text-3xl font-bold uppercase text-center px-4">
                       {item.title}
                     </h3>
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
 
             <motion.div
               variants={fadeUp}
@@ -325,7 +336,9 @@ export default function Services() {
         </section>
 
         {serviceSections.map((section) => (
-          <ServiceSection key={section.title} {...section} />
+          <DeferredRender key={section.title} minHeight="420px" rootMargin="350px 0px">
+            <ServiceSection {...section} />
+          </DeferredRender>
         ))}
       </section>
     </PageLayout>

@@ -27,13 +27,14 @@ export default function Gameoverview() {
               <h2 className="text-3xl tracking-widest mb-6">OVERVIEW</h2>
 
               <p className="text-gray-300 leading-relaxed lg:text-2xl sm:text-base">
-                This is a sample placeholder description used to represent
-                content in a game overview section. It describes a fantasy
-                themed slot set in a magical environment with visual elements,
-                characters, and animations. The layout, effects, bonus flow,
-                and UI elements mentioned here are only for demonstration
-                purposes and help visualize how real content will appear once
-                finalized.
+                Heavenly Dragons is a premium Asian-fantasy slot game built
+                around golden dragon imagery, red lacquer backdrops, cloud
+                motifs, koi symbols, guardian lions, and scale-patterned card
+                letters. The reel symbols use strong silhouettes, polished gold
+                trim, and high-contrast color coding so wins and special icons
+                are easy to read at a glance. From the title art to the symbol
+                sheet, the game is designed to feel ceremonial, collectible,
+                and reward-driven.
               </p>
             </div>
           </div>
