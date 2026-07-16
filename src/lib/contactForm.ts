@@ -1,4 +1,6 @@
-const contactEndpoint = "https://formsubmit.co/ajax/contact@moonglade.co.in";
+const contactEndpoint =
+  import.meta.env.VITE_CONTACT_FORM_ENDPOINT ||
+  "https://formsubmit.co/ajax/contact@moonglade.co.in";
 
 type ContactSubmission = {
   firstName?: string;
