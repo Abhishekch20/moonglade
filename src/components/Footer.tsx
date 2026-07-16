@@ -66,27 +66,27 @@ const Footer = () => {
             <h4 className="font-semibold text-xl tracking-widest mb-4">Services</h4>
             <ul className="space-y-3 text-md text-gray-400">
               <li>
-                <Link to="/services/serviceslist/2dart" className="hover:text-white transition">
+                <Link to="/services/art" className="hover:text-white transition">
                   2D Art
                 </Link>
               </li>
               <li>
-                <Link to="/services/serviceslist/2danimation" className="hover:text-white transition">
+                <Link to="/services/animation" className="hover:text-white transition">
                   2D animation
                 </Link>
               </li>
               <li>
-                <Link to="/services/serviceslist/slotgameart" className="hover:text-white transition">
+                <Link to="/services/slot-game-art" className="hover:text-white transition">
                   Slot Game Art
                 </Link>
               </li>
               <li>
-                <Link to="/services/serviceslist/slotgamedevelopment" className="hover:text-white transition">
+                <Link to="/services/slot-game-development" className="hover:text-white transition">
                   Slot Game Development
                 </Link>
               </li>
               <li>
-                <Link to="/services/serviceslist/PlayerEngagement" className="hover:text-white transition">
+                <Link to="/services/player-engagement" className="hover:text-white transition">
                   Player Engagement
                 </Link>
               </li>
@@ -98,32 +98,32 @@ const Footer = () => {
             <h4 className="font-semibold text-xl tracking-widest mb-4">Recent Projects</h4>
             <ul className="space-y-3 text-md text-gray-400">
               <li>
-                <Link to="/projects/cursed-clinic" className="hover:text-white transition">
+                <Link to="/portfolio/heavenly-dragons" className="hover:text-white transition">
                   Heavenly Dragons
                 </Link>
               </li>
               <li>
-                <Link to="/projects/space-adventure" className="hover:text-white transition">
+                <Link to="/portfolio/jurassic-jungle" className="hover:text-white transition">
                   Jurassic Jungle
                 </Link>
               </li>
               <li>
-                <Link to="/projects/panda-fortune" className="hover:text-white transition">
+                <Link to="/portfolio/dragons-treasure" className="hover:text-white transition">
                   Dragons Treasure
                 </Link>
               </li>
               <li>
-                <Link to="/projects/panda-fortune" className="hover:text-white transition">
+                <Link to="/portfolio/mythic-fortune" className="hover:text-white transition">
                   Mythic Fortune
                 </Link>
               </li>
               <li>
-                <Link to="/projects/panda-fortune" className="hover:text-white transition">
+                <Link to="/portfolio/pirate-goldrush" className="hover:text-white transition">
                   Pirate Gold Rush
                 </Link>
               </li>
               <li>
-                <Link to="/projects/panda-fortune" className="hover:text-white transition">
+                <Link to="/portfolio/chinese-game" className="hover:text-white transition">
                   Osiris Fortune
                 </Link>
               </li>

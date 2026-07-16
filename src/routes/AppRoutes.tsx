@@ -1,5 +1,5 @@
 import { Suspense, lazy } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import RouteLoader from "../components/RouteLoader";
 
 const Home = lazy(() => import("../pages/Home/Home"));
@@ -62,13 +62,21 @@ export default function AppRoutes() {
         <Route path="/portfolio/pirate-goldrush" element={<PirateGoldrush />} />
         <Route path="/portfolio/chinese-game" element={<Chinese />} />
 
-        <Route path="/services/Art" element={<Art />} />
-        <Route path="/services/Animation" element={<Animation />} />
-        <Route path="/services/PlayerEngagement" element={<PlayerEngagement />} />
-        <Route path="/services/SlotGameArt" element={<SlotGameArt />} />
+        <Route path="/services/art" element={<Art />} />
+        <Route path="/services/animation" element={<Animation />} />
+        <Route path="/services/player-engagement" element={<PlayerEngagement />} />
+        <Route path="/services/slot-game-art" element={<SlotGameArt />} />
+        <Route
+          path="/services/slot-game-development"
+          element={<SlotGameDevelopment />}
+        />
+        <Route path="/services/Art" element={<Navigate to="/services/art" replace />} />
+        <Route path="/services/Animation" element={<Navigate to="/services/animation" replace />} />
+        <Route path="/services/PlayerEngagement" element={<Navigate to="/services/player-engagement" replace />} />
+        <Route path="/services/SlotGameArt" element={<Navigate to="/services/slot-game-art" replace />} />
         <Route
           path="/services/SlotGameDevelopment"
-          element={<SlotGameDevelopment />}
+          element={<Navigate to="/services/slot-game-development" replace />}
         />
 
         <Route path="*" element={<div>Page Not Found</div>} />

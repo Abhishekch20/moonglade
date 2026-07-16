@@ -7,11 +7,11 @@ import { cn } from "@/lib/utils";
 import logo from "@/assets/logo.webp";
 
 const services = [
-  { name: "Concept Art", href: "/Services/Art" },
-  { name: "Game Art", href: "/Services/Animation" },
-  { name: "Animation", href: "/Services/PlayerEngagement" },
-  { name: "Creative Support", href: "/Services/SlotGameArt" },
-  { name: "Porting / Migration", href: "/Services/SlotGameDevelopment" },
+  { name: "Concept Art", href: "/services/art" },
+  { name: "Game Art", href: "/services/animation" },
+  { name: "Animation", href: "/services/player-engagement" },
+  { name: "Creative Support", href: "/services/slot-game-art" },
+  { name: "Porting / Migration", href: "/services/slot-game-development" },
 ];
 
 export function Navbar() {

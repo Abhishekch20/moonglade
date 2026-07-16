@@ -4,6 +4,8 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 import { handleContactRequest } from "./api/contact-handler";
 
+const maxRequestBytes = 16 * 1024;
+
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
@@ -28,12 +30,29 @@ export default defineConfig(({ mode }) => {
             }
 
             let rawBody = "";
+            let receivedBytes = 0;
+            let requestTooLarge = false;
 
             req.on("data", (chunk) => {
+              receivedBytes += chunk.length;
+
+              if (receivedBytes > maxRequestBytes) {
+                requestTooLarge = true;
+                res.statusCode = 413;
+                res.setHeader("Content-Type", "application/json");
+                res.end(JSON.stringify({ error: "Request body is too large." }));
+                req.destroy();
+                return;
+              }
+
               rawBody += chunk;
             });
 
             req.on("end", async () => {
+              if (requestTooLarge) {
+                return;
+              }
+
               let payload = undefined;
 
               try {
